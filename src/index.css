@@ -1,0 +1,17 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+* {
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.sidebar-container {
+  @apply bg-blue-300 h-[50rem] rounded-3xl ml-0 p-4 border transition-all duration-500 border-solid relative;
+}
+
+.sidebar {
+  @apply flex items-center mt-2 p-4 rounded-lg cursor-pointer 
+  hover:bg-white transition-all duration-300;
+}
