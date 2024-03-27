@@ -1,23 +1,23 @@
-# Reciping
-Este é um projeto frontend desenvolvido em React e Tailwind CSS para criar um site de receitas. O objetivo é permitir aos usuários visualizar receitas, publicar suas próprias receitas, editar as receitas existentes, favoritar receitas e autenticar-se para acessar funcionalidades exclusivas.
+### Reciping
+This is a frontend project developed in React and Tailwind CSS to create a recipe website. The goal is to allow users to view recipes, publish their own recipes, edit existing recipes, favorite recipes, and authenticate to access exclusive features.
 
-## Funcionalidades
-- Feed de Receitas: Visualize uma lista de receitas compartilhadas por outros usuários.
-- Publicação de Receitas: Compartilhe suas próprias receitas com a comunidade.
-- Edição de Receitas: Faça alterações em suas receitas publicadas.
-- Favoritar Receitas: Marque receitas como favoritas para acessá-las facilmente mais tarde.
-- Autenticação: Faça login para acessar funcionalidades exclusivas para usuários autenticados.
+### Features
+- Recipe Feed: View a list of recipes shared by other users.
+- Recipe Publishing: Share your own recipes with the community.
+- Recipe Editing: Make changes to your published recipes.
+- Favorite Recipes: Mark recipes as favorites to access them easily later.
+- Authentication: Log in to access exclusive features for authenticated users.
 
-## Tecnologias Utilizadas
-- React: Biblioteca JavaScript para construção da interface do usuário.
-- Tailwind CSS: Framework CSS para estilização rápida e responsiva.
-- Vite: Build tool rápida para projetos web modernos.
+### Technologies Used
+- React: JavaScript library for building the user interface.
+- Tailwind CSS: CSS framework for quick and responsive styling.
+- Vite: Fast build tool for modern web projects.
 
-## Como Executar o Projeto
-Clone este repositório.
-Instale as dependências do projeto com ```npm install``` ou ```yarn install```.
+### How to Run the Project
+Clone this repository.
+Install project dependencies with ``npm install`` or ``yarn install``.
 
-Configure o Tailwind CSS com o Vite:
-Instale o plugin Windi CSS: ```npm install vite-plugin-windicss --save-dev``` ou ```yarn add vite-plugin-windicss --dev```.
+Configure Tailwind CSS with Vite:
+Install the Windi CSS plugin: ``npm install vite-plugin-windicss --save-dev`` or ``yarn add vite-plugin-windicss --dev``.
 
-Execute o projeto localmente com ```npm run dev``` ou ```yarn dev```.
+Run the project locally with ``npm run dev`` or ``yarn dev``.
