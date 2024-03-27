@@ -15,8 +15,9 @@ Este é um projeto frontend desenvolvido em React e Tailwind CSS para criar um s
 
 ## Como Executar o Projeto
 Clone este repositório.
-Instale as dependências do projeto com ```npm install``` ou yarn install.
+Instale as dependências do projeto com ```npm install``` ou ```yarn install```.
+
 Configure o Tailwind CSS com o Vite:
-Instale o plugin Windi CSS: npm install vite-plugin-windicss --save-dev ou yarn add vite-plugin-windicss --dev.
-Crie um arquivo vite.config.js na raiz do seu projeto e configure o plugin Windi CSS (veja exemplo abaixo).
-Execute o projeto localmente com npm start ou yarn start.
+Instale o plugin Windi CSS: ```npm install vite-plugin-windicss --save-dev``` ou ```yarn add vite-plugin-windicss --dev```.
+
+Execute o projeto localmente com ```npm run dev``` ou ```yarn dev```.
