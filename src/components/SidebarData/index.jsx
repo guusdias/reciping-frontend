@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { datas } from './Data';
+import { datas } from '../../utils/Data';
 
 const SidebarData = ({ toggle }) => {
   return (

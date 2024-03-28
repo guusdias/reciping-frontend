@@ -1,7 +1,7 @@
 import { useState } from "react";
 import {BiChevronLeft} from "react-icons/bi";
-import UserProfile from "./components/UserProfile";
-import SidebarData from "./components/SidebarData";
+import UserProfile from "../UserProfile";
+import SidebarData from "../SidebarData";
 
 export default function Sidebar () { 
 
