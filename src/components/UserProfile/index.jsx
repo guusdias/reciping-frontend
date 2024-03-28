@@ -10,7 +10,6 @@ const UserProfile = ({ toggle }) => {
         alt="pic-profile"
         className="w-full h-full rounded-full object-cover"
         />
-
       </div>
 
       <div className={toggle ? "opacity-0 delay-200" : ""}>
