@@ -1,14 +1,14 @@
 // App.jsx
-import React from "react";
 import "./App.css";
-import Sidebar from "./components/SidebarContainer/index.jsx";
-import RecipiesFeed from "./components/RecipiesFeed/index.jsx";
+import { Outlet } from "react-router-dom";
+import RecipesFeed from "./components/RecipiesFeed";
+import SidebarContainer from "./components/SidebarContainer"
 
 function App() {
   return (
     <div className="flex">
-      <Sidebar />
-      <RecipiesFeed />
+      <SidebarContainer/>
+      <Outlet/>
     </div>
   );
 }
