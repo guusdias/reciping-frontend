@@ -7,8 +7,6 @@ import SidebarContainer from "./components/SidebarContainer"
 function App() {
   return (
     <div className="flex">
-      <SidebarContainer/>
-      <Outlet/>
     </div>
   );
 }
