@@ -3,12 +3,13 @@ import Sidebar from "../../components/SidebarContainer";
 import { Container } from "postcss";
 import RecipesFeed from "../../components/RecipiesFeed";
 
-export default function BasePage () {
+export default function BasePage() {
   return (
-  <main>
-    <Sidebar/>
-    <Outlet/>
-  </main>    
-
+    <main>
+      <div className="flex justify-around">
+        <Sidebar />
+        <Outlet />
+      </div>
+    </main>
   );
 }

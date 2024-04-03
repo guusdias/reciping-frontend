@@ -19,7 +19,7 @@ const RecipesFeed = () => {
   }, []);
 
   return (
-    <div className="flex-grow bg-white p-4 grid grid-cols-1">
+    <div className="flex flex-col gap-10 items-left shadow-md p-10 rounded-3xl">
       {recipes.map((recipe, index) => (
         <Recipe
           key={index}
