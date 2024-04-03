@@ -6,7 +6,7 @@ import RecipesFeed from "../../components/RecipiesFeed";
 export default function BasePage() {
   return (
     <main>
-      <div className="flex">
+      <div className="flex justify-around">
         <Sidebar />
         <Outlet />
       </div>
