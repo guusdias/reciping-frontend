@@ -5,6 +5,11 @@
 * {
   padding: 0;
   box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-variation-settings:
+    "slnt"0;
 }
 
 .sidebar-container {
@@ -12,6 +17,9 @@
 }
 
 .sidebar {
-  @apply flex items-center mt-2 p-4 rounded-lg cursor-pointer 
-  hover:bg-white transition-all duration-300;
+  @apply flex items-center mt-2 p-4 rounded-lg cursor-pointer;
+}
+
+.sidebar:hover {
+  @apply flex items-center mt-2 p-4 rounded-lg cursor-pointer bg-white transition-all duration-300;
 }
