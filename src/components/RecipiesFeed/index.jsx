@@ -34,7 +34,7 @@ const RecipesFeed = () => {
           <Recipe
             key={index}
             description={recipe.description}
-            title={recipe.title}
+            title={capitalizeFirstLetter(recipe.title)}
             ingredients={recipe.ingredients.toLowerCase()}
             instructions={capitalizeFirstLetter(recipe.instructions)}
             img_url={recipe.img_url}
