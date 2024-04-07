@@ -1,6 +1,16 @@
 import React from "react";
+import ElipseMenu from "../ElipseMenu";
 
-const Recipe = ({ title, description, ingredients, instructions, img_url }) => {
+const Recipe = ({
+  id,
+  title,
+  description,
+  ingredients,
+  instructions,
+  img_url,
+}) => {
+  console.log("id recebido na receita", id);
+
   return (
     <div className="bg-white rounded-xl shadow-md overflow-hidden md:max-w-4xl flex flex-row justify-between">
       <div className="overflow-hidden px-7 py-4 flex items-center">
@@ -22,6 +32,7 @@ const Recipe = ({ title, description, ingredients, instructions, img_url }) => {
           <p className="text-gray-700">{instructions}</p>
         </div>
       </div>
+      <ElipseMenu id={id} />
     </div>
   );
 };
