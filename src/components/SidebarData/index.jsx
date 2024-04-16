@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { datas } from '../../utils/Data';
+import { Link } from 'react-router-dom';
 
 const SidebarData = ({ toggle }) => {
   return (
@@ -8,9 +9,11 @@ const SidebarData = ({ toggle }) => {
         return (
           <div key={index} className={`${toggle ? "last:w-[3.6rem]" : "last:w-[15rem]"}
            sidebar last:absolute`}> 
-            <div className="mr-8 text-[1.7rem] text-brown">{data.icon}</div>
-            <div className={`${toggle ? "opacity-0 delay-200" : ""}
+            <Link key={data.id} to={data.path}>
+              <div className="mr-8 text-[1.7rem] text-brown">{data.icon}</div>
+              <div className={`${toggle ? "opacity-0 delay-200" : ""}
                 text-[1rem] text-brown whitespace-pre`}>{data.text}</div>
+            </Link>
           </div>
         )
       })}
@@ -23,3 +26,4 @@ SidebarData.propTypes = {
 };
 
 export default SidebarData;
+
