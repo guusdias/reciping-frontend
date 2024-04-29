@@ -2,35 +2,42 @@ import { CgProfile } from "react-icons/cg";
 import { GrFavorite } from "react-icons/gr";
 import { FaList } from "react-icons/fa6";
 import { RiLogoutCircleLine } from "react-icons/ri";
-import { Link } from "react-router-dom";
+import { MdFormatListBulletedAdd } from "react-icons/md";
 
 export const datas = [
+    
+    {
+      id: 1,
+      icon: <MdFormatListBulletedAdd />,
+      text: 'Add Recipe',
+      path: '/addRecipe'
+    },
   
-  {
-    id: 1,
-    icon: <CgProfile />,
-    text: 'My profile',
-    path: '/profile'
-  },
+    {
+      id: 2,
+      icon: <FaList />,
+      text: "My Recipes",
+      path: '/recipes'
+    },
+      
+    {
+      id: 3,
+      icon: <GrFavorite />,
+      text: "Favorites",
+      path: '/favorites'
+    },
 
-  {
-    id: 2,
-    icon: <GrFavorite />,
-    text: "Favorites",
-    path: '/favorites'
-  },
+    {
+      id: 4,
+      icon: <CgProfile />,
+      text: 'My profile',
+      path: '/profile'
+    },
 
-  {
-    id: 3,
-    icon: <FaList />,
-    text: "My Recipes",
-    path: '/recipes'
-  },
-  
-  {
-    id: 4,
-    icon: <RiLogoutCircleLine />,
-    text: "Logout",
-    path: '/login'
-  }
+    {
+      id: 5,
+      icon: <RiLogoutCircleLine />,
+      text: "Logout",
+      path: '/login'
+    }
 ]

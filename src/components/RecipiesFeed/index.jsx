@@ -30,7 +30,7 @@ const RecipesFeed = () => {
   }
 
   return (
-    <div className="flex flex-col gap-10 items-left shadow-md p-10 rounded-3xl bg-slate-50">
+    <div className="flex flex-col mt-10 gap-10 items-left shadow-md p-10 rounded-3xl bg-slate-50">
       {loading ? (
         <span className="loading loading-ring loading-lg"></span>
       ) : (
