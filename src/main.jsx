@@ -6,10 +6,12 @@ import Profile from "./pages/Profile/index.jsx";
 import BasePage from "./pages/BasePage/index.jsx";
 import Feed from "./pages/Feed/index.jsx";
 import Addrecipe from "./components/Addrecipe/index.jsx"
+import NotFound from "./pages/NotFound/index.jsx"
 
 const router = createBrowserRouter([
   {
     path: "/",
+    errorElement: <NotFound/>,
     element: <BasePage />,
     children: [
       { path: "/feed", exact: true, element: <Feed /> },
