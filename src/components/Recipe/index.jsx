@@ -34,6 +34,7 @@ const Recipe = ({
       </div>
       <ElipseMenu id={id} />
     </div>
+
   );
 };
 

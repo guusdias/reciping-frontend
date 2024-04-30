@@ -7,6 +7,7 @@ import BasePage from "./pages/BasePage/index.jsx";
 import Feed from "./pages/Feed/index.jsx";
 import Addrecipe from "./components/Addrecipe/index.jsx"
 import NotFound from "./pages/NotFound/index.jsx"
+import Favorites from "./pages/Favorites/index.jsx";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,7 @@ const router = createBrowserRouter([
       { path: "/feed", exact: true, element: <Feed /> },
       { path: "/profile", element: <Profile /> },
       { path: "/addRecipe", exact: true, element: <Addrecipe/>  },
+      { path: "/favorites", exact: true, element: <Favorites/>  },
     ],
   },
 ]);
@@ -26,3 +28,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <RouterProvider router={router} />
   </React.StrictMode>
 );
+
+// nota: arrumar a questao do sidebar

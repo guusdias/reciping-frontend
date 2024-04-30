@@ -43,9 +43,9 @@ const RecipesFeed = () => {
             ingredients={recipe.ingredients.toLowerCase()}
             instructions={capitalizeFirstLetter(recipe.instructions)}
             img_url={recipe.img_url}
-          />
-        ))
-      )}
+            />
+          ))
+        )}
     </div>
   );
 };
