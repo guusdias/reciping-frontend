@@ -10,7 +10,7 @@ export default function Sidebar() {
     <div
       className={`${
         toggle ? "w-[5.7rem]" : "w-[17rem]"
-      } sidebar-container flex-none bg-gray-200 p-4`}
+      } sidebar-container flex-none bg-gradient-to-r from-indigo-500 to-purple-600 p-4 text-white`}
     >
       <UserProfile toggle={toggle} />
       <SidebarData toggle={toggle} />
