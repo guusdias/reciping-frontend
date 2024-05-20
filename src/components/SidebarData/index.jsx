@@ -6,7 +6,6 @@ const SidebarData = ({ toggle }) => {
   return (
     <div className="">
       {datas.map((data, index) => {
-        // Adicione um segundo parâmetro 'index' ao map
         return (
           <div
             key={index}

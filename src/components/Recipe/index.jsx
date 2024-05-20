@@ -8,6 +8,7 @@ const Recipe = ({
   ingredients,
   instructions,
   img_url,
+  mainIngredient,
 }) => {
   console.log("id recebido na receita", id);
 
@@ -31,10 +32,12 @@ const Recipe = ({
         <div className="mt-8 text-left">
           <p className="text-gray-700">{instructions}</p>
         </div>
+        <div className="mt-8 text-left">
+          <p className="text-gray-700">{mainIngredient}</p>
+        </div>
       </div>
       <ElipseMenu id={id} />
     </div>
-
   );
 };
 

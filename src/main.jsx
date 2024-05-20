@@ -5,9 +5,10 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Profile from "./pages/Profile/index.jsx";
 import BasePage from "./pages/BasePage/index.jsx";
 import Feed from "./pages/Feed/index.jsx";
-import Addrecipe from "./components/AddRecipe/index.jsx";
+import AddRecipe from "./components/AddRecipe/index.jsx";
 import NotFound from "./pages/NotFound/index.jsx";
 import Favorites from "./pages/Favorites/index.jsx";
+import MyRecipes from "./pages/MyRecipes/index.jsx";
 
 const router = createBrowserRouter([
   {
@@ -16,8 +17,9 @@ const router = createBrowserRouter([
     element: <BasePage />,
     children: [
       { path: "/feed", exact: true, element: <Feed /> },
+      { path: "/recipes", exact: true, element: <MyRecipes /> },
       { path: "/profile", element: <Profile /> },
-      { path: "/addRecipe", exact: true, element: <Addrecipe /> },
+      { path: "/addRecipe", exact: true, element: <AddRecipe /> },
       { path: "/favorites", exact: true, element: <Favorites /> },
     ],
   },
@@ -28,5 +30,3 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <RouterProvider router={router} />
   </React.StrictMode>
 );
-
-// nota: arrumar a questao do sidebar
