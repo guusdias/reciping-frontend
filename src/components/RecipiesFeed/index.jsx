@@ -1,48 +1,54 @@
 import { useState, useEffect } from "react";
 import Recipe from "../Recipe";
-import api from "../../api/Recipie/index";
+import api from "../../api/User/index.jsx";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const RecipesFeed = () => {
   const [recipes, setRecipes] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    const getRecipes = async () => {
+    const fetchRecipes = async () => {
       try {
-        setLoading(true);
-        const recipesData = await api.fetchRecipes();
-        setRecipes(recipesData);
-        setLoading(false);
+        setIsLoading(true);
+        const response = await api.fetchAllRecipes();
+        const formattedRecipes = response.recipes
+          .filter((recipe) => recipe._doc)
+          .map((recipe) => ({
+            title: recipe._doc.title,
+            description: recipe._doc.description,
+            mainIngredient: recipe._doc.mainIngredient,
+            ingredients: recipe._doc.ingredients.toLowerCase(),
+            instructions: recipe._doc.instructions,
+            img_url: recipe._doc.img_url,
+            _id: recipe._doc._id,
+          }));
+        setRecipes(formattedRecipes);
       } catch (error) {
         console.error("Error fetching recipes:", error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
-    getRecipes();
+    fetchRecipes();
   }, []);
-
-  function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
-  }
-
-  function transformToString(valor) {
-    return valor.toString();
-  }
 
   return (
     <div className="flex flex-col mt-0 gap-10 items-left shadow-md p-10 rounded-3xl bg-slate-50">
-      {loading ? (
-        <span className="loading loading-ring loading-lg"></span>
+      {isLoading ? (
+        <CircularProgress />
       ) : (
         recipes.map((recipe) => (
           <Recipe
             key={recipe._id}
-            id={transformToString(recipe._id)}
+            id={recipe._id}
             description={recipe.description}
-            title={capitalizeFirstLetter(recipe.title)}
-            ingredients={recipe.ingredients.toLowerCase()}
-            instructions={capitalizeFirstLetter(recipe.instructions)}
+            title={recipe.title}
+            ingredients={recipe.ingredients}
+            instructions={recipe.instructions}
             img_url={recipe.img_url}
+            main_ingredients={recipe.mainIngredient}
           />
         ))
       )}
