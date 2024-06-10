@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { AuthProvider, AuthContext } from "./contexts/AuthContext"; // Import AuthContext
+import { AuthProvider, AuthContext } from "./contexts/AuthContext";
 
 import Profile from "./pages/Profile/index.jsx";
 import BasePage from "./pages/BasePage/index.jsx";
