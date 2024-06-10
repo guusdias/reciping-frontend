@@ -1,9 +1,11 @@
 import React, { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext.jsx";
 import { makeAuth } from "../../api/Auth";
 
 const Login = () => {
   const { login } = useContext(AuthContext);
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -29,6 +31,7 @@ const Login = () => {
         console.log("Token de Acesso:", response.token);
         login(response.token);
         setError(null);
+        navigate("/"); // Redireciona para a página principal após login bem-sucedido
       } else {
         alert("Autenticação realizada, mas nenhum token foi retornado.");
         console.log("Nenhum token retornado na autenticação.");
