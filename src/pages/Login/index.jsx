@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext.jsx";
 import { makeAuth } from "../../api/Auth";
 
 const Login = () => {
+  const { login } = useContext(AuthContext);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -25,7 +27,7 @@ const Login = () => {
       if (response.token) {
         alert("Autenticação realizada com sucesso");
         console.log("Token de Acesso:", response.token);
-        localStorage.setItem("token", response.token);
+        login(response.token);
         setError(null);
       } else {
         alert("Autenticação realizada, mas nenhum token foi retornado.");
