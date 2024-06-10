@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { AuthProvider, AuthContext } from "./contexts/AuthContext"; // Import AuthContext
 
 import Profile from "./pages/Profile/index.jsx";
@@ -13,27 +13,26 @@ import Favorites from "./pages/Favorites/index.jsx";
 import MyRecipes from "./pages/MyRecipes/index.jsx";
 import Login from "./pages/Login/index";
 
+const ProtectedRoute = ({ element }) => {
+  return (
+    <AuthContext.Consumer>
+      {({ isAuthenticated }) => (isAuthenticated ? element : <Login />)}
+    </AuthContext.Consumer>
+  );
+};
+
 const router = createBrowserRouter([
   {
     path: "/",
-    element: (
-      <AuthContext.Consumer>
-        {({ isAuthenticated }) =>
-          isAuthenticated ? (
-            <BasePage>
-              <Route path="/feed" element={<Feed />} />
-              <Route path="/recipes" element={<MyRecipes />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/addRecipe" element={<AddRecipe />} />
-              <Route path="/favorites" element={<Favorites />} />
-            </BasePage>
-          ) : (
-            <Login />
-          )
-        }
-      </AuthContext.Consumer>
-    ),
+    element: <ProtectedRoute element={<BasePage />} />,
     errorElement: <NotFound />,
+    children: [
+      { path: "feed", element: <Feed /> },
+      { path: "recipes", element: <MyRecipes /> },
+      { path: "profile", element: <Profile /> },
+      { path: "addRecipe", element: <AddRecipe /> },
+      { path: "favorites", element: <Favorites /> },
+    ],
   },
   {
     path: "/login",
