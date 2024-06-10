@@ -1,31 +1,27 @@
-import Axios from "axios";
+import axios from "axios";
 
+const makeAuth = async (credentials) => {
+  const authUrl = "https://reciping-backend.onrender.com/auth/login";
 
-const credentials = {
-  username: 'seuUsuario',
-  password: 'suaSenha'
+  try {
+    const response = await axios.post(authUrl, credentials);
+    const token = response.data.token;
+    console.log("Token de autenticação:", token);
+
+    if (token) {
+      sessionStorage.setItem("authToken", token);
+    }
+
+    return {
+      token: token,
+    };
+  } catch (error) {
+    console.error(
+      "Erro de autenticação:",
+      error.response ? error.response.data : error.message
+    );
+    throw error;
+  }
 };
 
-const authUrl = "https://reciping-backend.onrender.com/auth/login"
-
-
-axios.post(authUrl, credentials)
-  .then(response => {
-    const token = response.data.token;
-    console.log('Token de autenticação:', token);
-
-    const config = {
-      headers: { Authorization: `Bearer ${token}` }
-    };
-
-    axios.get('https://reciping-backend.onrender.com/auth/login', config)
-      .then(protectedResponse => {
-        console.log('Resposta da rota protegida:', protectedResponse.data);
-      })
-      .catch(error => {
-        console.error('Erro ao acessar a rota protegida:', error);
-      });
-  })
-  .catch(error => {
-    console.error('Erro de autenticação:', error);
-  });
+export { makeAuth };

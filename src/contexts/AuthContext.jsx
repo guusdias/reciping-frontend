@@ -1,22 +1,27 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
 
-const AuthContext = createContext({
-  isAuthenticated: false,
-  login: () => {},
-  logout: () => {},
-});
+export const AuthContext = createContext();
 
-const AuthProvider = ({ children }) => {
+export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  const login = () => {
-    // Implement your login logic here (e.g., API calls, token handling)
-    setIsAuthenticated(true); // Set authenticated state after successful login
+  useEffect(() => {
+    const token = sessionStorage.getItem("authToken");
+    if (token && token.length > 0) {
+      setIsAuthenticated(true);
+    } else {
+      setIsAuthenticated(false);
+    }
+  }, []);
+
+  const login = (token) => {
+    sessionStorage.setItem("authToken", token);
+    setIsAuthenticated(true);
   };
 
   const logout = () => {
-    // Implement your logout logic here (e.g., clearing tokens, session data)
-    setIsAuthenticated(false); // Reset authenticated state after logout
+    sessionStorage.removeItem("authToken");
+    setIsAuthenticated(false);
   };
 
   return (
@@ -25,5 +30,3 @@ const AuthProvider = ({ children }) => {
     </AuthContext.Provider>
   );
 };
-
-export { AuthContext, AuthProvider };
