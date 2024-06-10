@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import { makeAuth } from '../../api/Auth/index.jsx'; // Importação direta de makeAuth
+import { makeAuth } from "../../api/Auth";
 
 const Login = () => {
   const [formData, setFormData] = useState({
     email: "",
-    password: ""
+    password: "",
   });
+
+  const [error, setError] = useState(null);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -14,19 +16,24 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("Form data being submitted:", formData);
     try {
-      const response = await makeAuth(formData);
-      if (response.accessToken) {
-        alert("Auth has been made");
-        console.log("Access Token:", response.accessToken);
-        localStorage.setItem('token', response.accessToken);
+      const response = await makeAuth({
+        email: formData.email,
+        password: formData.password,
+      });
+      if (response.token) {
+        alert("Autenticação realizada com sucesso");
+        console.log("Token de Acesso:", response.token);
+        localStorage.setItem("token", response.token);
+        setError(null);
       } else {
-        alert("Auth has been made, but no token was returned.");
-        console.log("No token returned from auth.");
+        alert("Autenticação realizada, mas nenhum token foi retornado.");
+        console.log("Nenhum token retornado na autenticação.");
       }
     } catch (error) {
-      alert("Auth hasn't been made");
-      console.error("Error during auth:", error.response ? error.response.data : error.message);
+      setError(error.message);
+      console.error("Erro durante a autenticação:", error.message);
     }
   };
 
@@ -40,6 +47,11 @@ const Login = () => {
           <h2 className="text-3xl font-semibold text-center text-indigo-600 mb-6">
             Login
           </h2>
+          {error && (
+            <div className="mb-4 p-4 text-red-700 bg-red-100 rounded-lg">
+              {error}
+            </div>
+          )}
           <form onSubmit={handleSubmit} method="post" className="space-y-4">
             <div>
               <label
