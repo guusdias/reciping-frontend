@@ -6,46 +6,43 @@ import { MdFormatListBulletedAdd } from "react-icons/md";
 import { IoHome } from "react-icons/io5";
 
 export const datas = [
-    
-    {
-      id: 1,
-      icon: <IoHome />,
-      text: 'Home',
-      path: '/feed'
+  {
+    id: 1,
+    icon: <IoHome />,
+    text: "Home",
+    path: "/feed",
+  },
+  {
+    id: 2,
+    icon: <MdFormatListBulletedAdd />,
+    text: "Add Recipe",
+    path: "/addRecipe",
+  },
+  {
+    id: 3,
+    icon: <FaList />,
+    text: "My Recipes",
+    path: "/recipes",
+  },
+  {
+    id: 4,
+    icon: <GrFavorite />,
+    text: "Favorites",
+    path: "/favorites",
+  },
+  {
+    id: 5,
+    icon: <CgProfile />,
+    text: "My profile",
+    path: "/profile",
+  },
+  {
+    id: 6,
+    icon: <RiLogoutCircleLine />,
+    text: "Logout",
+    onClick: () => {
+      sessionStorage.clear();
+      window.location.href = "/login";
     },
-
-    {
-      id: 2,
-      icon: <MdFormatListBulletedAdd />,
-      text: 'Add Recipe',
-      path: '/addRecipe'
-    },
-  
-    {
-      id: 3,
-      icon: <FaList />,
-      text: "My Recipes",
-      path: '/recipes'
-    },
-      
-    {
-      id: 4,
-      icon: <GrFavorite />,
-      text: "Favorites",
-      path: '/favorites'
-    },
-
-    {
-      id: 5,
-      icon: <CgProfile />,
-      text: 'My profile',
-      path: '/profile'
-    },
-
-    {
-      id: 6,
-      icon: <RiLogoutCircleLine />,
-      text: "Logout",
-      path: '/login'
-    }
-]
+  },
+];
