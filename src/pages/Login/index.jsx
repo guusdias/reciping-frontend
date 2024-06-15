@@ -27,13 +27,10 @@ const Login = () => {
         password: formData.password,
       });
       if (response.token) {
-        alert("Autenticação realizada com sucesso");
-        console.log("Token de Acesso:", response.token);
         login(response.token);
         setError(null);
-        navigate("/"); // Redireciona para a página principal após login bem-sucedido
+        navigate("/");
       } else {
-        alert("Autenticação realizada, mas nenhum token foi retornado.");
         console.log("Nenhum token retornado na autenticação.");
       }
     } catch (error) {
@@ -72,7 +69,7 @@ const Login = () => {
                 value={formData.email}
                 onChange={handleInputChange}
                 className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-                placeholder="your@email.com"
+                placeholder="seu@email.com"
               />
             </div>
             <div>
@@ -80,7 +77,7 @@ const Login = () => {
                 htmlFor="password"
                 className="block text-sm font-medium text-gray-700"
               >
-                Password
+                Senha
               </label>
               <input
                 type="password"
@@ -89,7 +86,7 @@ const Login = () => {
                 value={formData.password}
                 onChange={handleInputChange}
                 className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-                placeholder="Enter your password"
+                placeholder="Coloque a sua senha"
               />
             </div>
             <div className="flex items-center justify-between">
@@ -102,10 +99,10 @@ const Login = () => {
             </div>
             <div className="text-center mt-4">
               <a
-                href="#"
+                href="/register"
                 className="text-sm text-indigo-500 hover:text-indigo-700"
               >
-                Forgot password?
+                Não tem uma conta? Clique e faça seu cadastro!
               </a>
             </div>
           </form>

@@ -1,6 +1,8 @@
 import PropTypes from "prop-types";
 
 const UserProfile = ({ toggle }) => {
+  const user = JSON.parse(sessionStorage.getItem("user"));
+
   return (
     <div
       className={`flex gap-5 items-center 
@@ -12,16 +14,16 @@ const UserProfile = ({ toggle }) => {
     >
       <div className="min-w-[3.5rem] h-[3.5rem]">
         <img
-          src="https://github.com/lucaswillians.png"
+          src={`${user.user_img}`}
           alt="pic-profile"
           className="w-full h-full rounded-full object-cover"
         />
       </div>
 
       <div className={toggle ? "opacity-0 delay-200" : ""}>
-        <h3 className="text-xl text-black">Lucas Willian</h3>
+        <h3 className="text-xl text-black">{`${user.user_name}`}</h3>
         <span className="text-[0.75rem] opacity-60 text-black">
-          luquinhas@gmail.com
+          {`${user.email}`}
         </span>
       </div>
     </div>
