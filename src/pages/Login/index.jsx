@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext.jsx";
 import { makeAuth } from "../../api/Auth";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Login = () => {
   const { login } = useContext(AuthContext);
@@ -12,6 +13,7 @@ const Login = () => {
   });
 
   const [error, setError] = useState(null);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -41,7 +43,7 @@ const Login = () => {
 
   return (
     <div className="flex items-center justify-center bg-gray-100 h-screen">
-      <div className="flex w-full max-w-4l bg-white rounded-lg shadow-lg overflow-hidden h-screen">
+      <div className="flex w-full bg-white rounded-lg shadow-lg overflow-hidden h-screen">
         <div className="hidden md:flex md:w-1/2 bg-gradient-to-r from-indigo-500 to-purple-600 items-center justify-center">
           <div className="text-white text-4xl font-bold">Welcome Back!</div>
         </div>
@@ -72,7 +74,7 @@ const Login = () => {
                 placeholder="seu@email.com"
               />
             </div>
-            <div>
+            <div className="relative">
               <label
                 htmlFor="password"
                 className="block text-sm font-medium text-gray-700"
@@ -80,7 +82,7 @@ const Login = () => {
                 Senha
               </label>
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 id="password"
                 name="password"
                 value={formData.password}
@@ -88,6 +90,13 @@ const Login = () => {
                 className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                 placeholder="Coloque a sua senha"
               />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute inset-y-0 right-0 flex items-center mt-6 pr-3 text-gray-500"
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </button>
             </div>
             <div className="flex items-center justify-between">
               <button
