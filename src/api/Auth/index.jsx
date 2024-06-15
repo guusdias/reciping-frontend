@@ -6,8 +6,6 @@ const makeAuth = async (credentials) => {
   try {
     const response = await axios.post(authUrl, credentials);
     const { token, user } = response.data;
-    console.log("Token de autenticação:", token);
-    console.log("Dados do usuário:", user);
 
     if (token) {
       sessionStorage.setItem("authToken", token);

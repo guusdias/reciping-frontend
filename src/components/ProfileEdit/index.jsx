@@ -42,6 +42,8 @@ const ProfileEdit = () => {
     });
   };
 
+  const user = JSON.parse(sessionStorage.getItem("user"));
+
   return (
     <div className="container mx-auto max-w-2xl bg-white p-8 border-r-8 h-full w-full">
       <div className="flex flex-row">
@@ -51,7 +53,7 @@ const ProfileEdit = () => {
             onClick={handleImageClick}
           >
             <img
-              src="https://github.com/Lucaswillians.png"
+              src={`${user.user_img}`}
               alt="profile photo"
               className="rounded-full w-62 h-62 object-cover"
             />
