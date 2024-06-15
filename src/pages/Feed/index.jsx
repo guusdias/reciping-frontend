@@ -2,7 +2,7 @@ import RecipiesFeed from "../../components/RecipiesFeed/index";
 
 export default function Feed() {
   return (
-    <div>
+    <div className="h-full">
       <RecipiesFeed />
     </div>
   );
