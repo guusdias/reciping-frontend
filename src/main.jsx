@@ -12,6 +12,7 @@ import NotFound from "./pages/NotFound/index.jsx";
 import Favorites from "./pages/Favorites/index.jsx";
 import MyRecipes from "./pages/MyRecipes/index.jsx";
 import Login from "./pages/Login/index";
+import Register from "./pages/Register/index.jsx";
 
 const ProtectedRoute = ({ element }) => {
   return (
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
+  },
+  {
+    path: "/register",
+    element: <Register />,
   },
 ]);
 

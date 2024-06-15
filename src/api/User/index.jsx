@@ -41,4 +41,25 @@ const fetchAllRecipes = async () => {
   }
 };
 
-export default { fetchRecipesByUser, fetchAllRecipes };
+export const registerUser = async (userData) => {
+  try {
+    const newUserData = {
+      ...userData,
+      recipes: [],
+    };
+    const response = await Axios.post(
+      "https://reciping-backend.onrender.com/user",
+      newUserData,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    throw new Error("Erro ao registrar usuário.");
+  }
+};
+
+export default { fetchRecipesByUser, fetchAllRecipes, registerUser };
