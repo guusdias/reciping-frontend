@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { registerUser } from "../../api/User/index";
 
 const Register = () => {
@@ -32,11 +33,11 @@ const Register = () => {
     }
 
     try {
-      const newUser = { user_name, email, password, user_img, recipes: [] }; // Adicionando recipes como array vazio
+      const newUser = { user_name, email, password, user_img, recipes: [] };
       const data = await registerUser(newUser);
       console.log("User registered:", data);
-      setError(""); // Limpa qualquer erro anterior
-      navigate("/login"); // Redireciona para a página de login
+      setError("");
+      navigate("/login");
     } catch (error) {
       console.error("Failed to register user:", error);
       setError("Falha ao registrar o usuário. Tente novamente.");
@@ -44,8 +45,8 @@ const Register = () => {
   };
 
   return (
-    <div className="flex items-center justify-center bg-gray-100 h-screen">
-      <div className="flex w-full max-w-4xl bg-white rounded-lg shadow-lg overflow-hidden h-screen">
+    <div className="flex items-center w-full bg-gray-100 h-screen">
+      <div className="flex w-full bg-white rounded-lg shadow-lg overflow-hidden h-screen">
         <div className="hidden md:flex md:w-1/2 bg-gradient-to-r from-indigo-500 to-purple-600 items-center justify-center">
           <div className="text-white text-4xl font-bold">
             Criar uma nova conta
@@ -114,9 +115,9 @@ const Register = () => {
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute inset-y-0 right-0 flex items-center px-4 text-gray-500 focus:outline-none"
+                className="absolute inset-y-0 right-0 flex items-center mt-5 px-4 text-gray-500 focus:outline-none"
               >
-                {showPassword ? "Esconder" : "Mostrar"}
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
               </button>
             </div>
             <div className="relative">
@@ -138,9 +139,9 @@ const Register = () => {
               <button
                 type="button"
                 onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                className="absolute inset-y-0 right-0 flex items-center px-4 text-gray-500 focus:outline-none"
+                className="absolute inset-y-0 right-0 flex items-center mt-5 px-4 text-gray-500 focus:outline-none"
               >
-                {showConfirmPassword ? "Esconder" : "Mostrar"}
+                {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
               </button>
             </div>
             <div className="flex items-center justify-between">
