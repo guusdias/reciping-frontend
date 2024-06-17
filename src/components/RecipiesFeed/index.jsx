@@ -38,7 +38,7 @@ const RecipesFeed = () => {
     <div className="flex flex-col mt-0 gap-10 items-left shadow-md p-10 rounded-3xl bg-slate-50 h-full w-full">
       {isLoading ? (
         <CircularProgress />
-      ) : (
+      ) : recipes.length > 0 ? (
         recipes.map((recipe) => (
           <Recipe
             key={recipe._id}
@@ -51,6 +51,8 @@ const RecipesFeed = () => {
             main_ingredients={recipe.mainIngredient}
           />
         ))
+      ) : (
+        <div>Nenhuma receita encontrada.</div>
       )}
     </div>
   );
