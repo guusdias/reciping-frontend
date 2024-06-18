@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { MdAddToPhotos } from "react-icons/md";
 
-export default function Addrecipe() {
+export default function AddRecipe() {
   const [recipeName, setRecipeName] = useState("");
   const [ingredients, setIngredients] = useState("");
   const [description, setDescription] = useState("");
   const [mainIngredient, setMainIngredient] = useState("");
   const [instructions, setInstructions] = useState("");
+  const [imgUrl, setImgUrl] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,8 +17,7 @@ export default function Addrecipe() {
       mainIngredient: mainIngredient,
       ingredients: ingredients,
       instructions: instructions,
-      // Assuming you have a way to handle image upload (not shown here)
-      img_url: getImageUrlFromUpload(), // Replace with actual function call
+      img_url: imgUrl,
     };
 
     // Logic to send the newRecipe object to your backend (e.g., using fetch or axios)
@@ -26,11 +26,8 @@ export default function Addrecipe() {
   };
 
   return (
-    <div className="form-container flex justify-center items-center h-fit-content">
-      <form
-        onSubmit={handleSubmit}
-        className="form-wrapper bg-white shadow-md rounded-lg p-10 w-[600px]"
-      >
+    <div className="form-container flex flex-col mt-0 gap-10 items-left shadow-md p-10 rounded-3xl bg-slate-50 h-full w-full">
+      <form onSubmit={handleSubmit} className="form-wrapper rounded-lg w-full">
         <h2 className="form-title text-2xl mb-5">Create Your Recipe</h2>
         <label htmlFor="recipeName" className="form-label block text-base mb-1">
           Recipe Name
@@ -43,7 +40,10 @@ export default function Addrecipe() {
           onChange={(e) => setRecipeName(e.target.value)}
           className="form-input w-full sm:w-[calc(100%-32px)] border border-gray-300 rounded-md p-3 text-base mb-3"
         />
-        <label htmlFor="ingredients" className="form-label">
+        <label
+          htmlFor="ingredients"
+          className="form-label block text-base mb-1"
+        >
           Ingredients
         </label>
         <textarea
@@ -54,7 +54,10 @@ export default function Addrecipe() {
           className="form-textarea w-full border border-gray-300 rounded-md p-3 text-base mb-3"
           rows={2}
         />
-        <label htmlFor="mainIngredient" className="form-label">
+        <label
+          htmlFor="mainIngredient"
+          className="form-label block text-base mb-1"
+        >
           Main Ingredient
         </label>
         <input
@@ -65,7 +68,10 @@ export default function Addrecipe() {
           onChange={(e) => setMainIngredient(e.target.value)}
           className="form-input w-full sm:w-[calc(100%-32px)] border border-gray-300 rounded-md p-3 text-base mb-3"
         />
-        <label htmlFor="description" className="form-label">
+        <label
+          htmlFor="description"
+          className="form-label block text-base mb-1"
+        >
           Description
         </label>
         <textarea
@@ -76,7 +82,10 @@ export default function Addrecipe() {
           className="form-textarea w-full border border-gray-300 rounded-md p-3 text-base mb-3"
           rows={3}
         />
-        <label htmlFor="instructions" className="form-label">
+        <label
+          htmlFor="instructions"
+          className="form-label block text-base mb-1"
+        >
           Instructions
         </label>
         <textarea
@@ -87,12 +96,20 @@ export default function Addrecipe() {
           className="form-textarea w-full border border-gray-300 rounded-md p-3 text-base mb-3"
           rows={5}
         />
-        <div className="addPhot text-black rounded-md px-6 py-3 text-lg cursor-pointer mt-[-10px] mb-[10px]">
-          <MdAddToPhotos />
-        </div>
+        <label htmlFor="imgUrl" className="form-label block text-base mb-1">
+          Image URL
+        </label>
+        <input
+          id="imgUrl"
+          type="text"
+          placeholder="Image URL"
+          value={imgUrl}
+          onChange={(e) => setImgUrl(e.target.value)}
+          className="form-input w-full sm:w-[calc(100%-32px)] border border-gray-300 rounded-md p-3 text-base mb-3"
+        />
         <button
           type="submit"
-          className="form-submit bg-blue-500 text-white rounded-md px-6 py-3 text-lg cursor-pointer"
+          className="form-submit bg-gradient-to-r from-indigo-500 to-purple-600 p-4 text-white rounded-md px-6 py-3 text-lg cursor-pointer"
         >
           Cadastrar
         </button>
