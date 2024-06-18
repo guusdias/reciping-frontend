@@ -1,4 +1,4 @@
-import ElipseMenu from "../../components/ElipseMenu";
+import Recipe from "../../components/Recipe";
 import { useFavoriteContext } from "../../contexts/Favorite"
 
 export default function Favorites () {
@@ -6,10 +6,10 @@ export default function Favorites () {
 
   return (
     <div className="favorites-recipies">
-      <section>
+      <section className="space-y-4">
         {
           favorite.map((fav) => {
-            return <ElipseMenu {...fav} key={fav.id} />
+            return <Recipe {...fav} key={fav.id} />
           })
         }
       </section>

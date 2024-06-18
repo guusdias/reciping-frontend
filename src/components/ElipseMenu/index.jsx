@@ -6,9 +6,6 @@ import EditIcon from "@mui/icons-material/Edit";
 import Divider from "@mui/material/Divider";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import AlertDialog from "../AlertDialog/index";
-import { GoHeart } from "react-icons/go";
-import { useFavoriteContext } from "../../contexts/Favorite";
-import { GoHeartFill } from "react-icons/go";
 
 const StyledMenu = styled((props) => (
   <Menu
@@ -54,10 +51,6 @@ const StyledMenu = styled((props) => (
 }));
 
 export default function ElipseMenu({ id }) {
-  const { favorite, addFavorite } = useFavoriteContext();
-  const isFavorite = favorite.some((fav) => fav.id === id);
-  const Icon = isFavorite ? GoHeartFill : GoHeart;
-
   const [anchorEl, setAnchorEl] = useState(null);
   const [openAlertDialog, setOpenAlertDialog] = useState(false);
 
@@ -102,15 +95,6 @@ export default function ElipseMenu({ id }) {
           />
         </MenuItem>
       </StyledMenu>
-      <div
-        className="text-black"
-        style={{ marginLeft:"2px", fontSize: "20px" }}
-        onClick={() => {
-          addFavorite({ id });
-        }}
-      >
-        <Icon />
-      </div>
     </div>
   );
 }
