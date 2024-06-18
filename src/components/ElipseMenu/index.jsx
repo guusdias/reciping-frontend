@@ -54,10 +54,6 @@ const StyledMenu = styled((props) => (
 }));
 
 export default function ElipseMenu({ id }) {
-  const { favorite, addFavorite } = useFavoriteContext();
-  const isFavorite = favorite.some((fav) => fav.id === id);
-  const Icon = isFavorite ? GoHeartFill : GoHeart;
-
   const [anchorEl, setAnchorEl] = useState(null);
   const [openAlertDialog, setOpenAlertDialog] = useState(false);
 
@@ -102,15 +98,6 @@ export default function ElipseMenu({ id }) {
           />
         </MenuItem>
       </StyledMenu>
-      <div
-        className="text-black"
-        style={{ marginLeft:"2px", fontSize: "20px" }}
-        onClick={() => {
-          addFavorite({ id });
-        }}
-      >
-        <Icon />
-      </div>
     </div>
   );
 }

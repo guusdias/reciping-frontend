@@ -19,6 +19,7 @@ export function useFavoriteContext() {
 
   function addFavorite(newFavorite) {
     const favoriteRepeated = favorite.some(
+      
       (item) => item.id === newFavorite.id
     );
 
