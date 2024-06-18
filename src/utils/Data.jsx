@@ -15,31 +15,31 @@ export const datas = [
   {
     id: 2,
     icon: <MdFormatListBulletedAdd />,
-    text: "Add Recipe",
+    text: "Adicionar Receitas",
     path: "/addRecipe",
   },
   {
     id: 3,
     icon: <FaList />,
-    text: "My Recipes",
+    text: "Minhas Receitas",
     path: "/recipes",
   },
   {
     id: 4,
     icon: <GrFavorite />,
-    text: "Favorites",
+    text: "Favoritos",
     path: "/favorites",
   },
   {
     id: 5,
     icon: <CgProfile />,
-    text: "My profile",
+    text: "Meu perfil",
     path: "/profile",
   },
   {
     id: 6,
     icon: <RiLogoutCircleLine />,
-    text: "Logout",
+    text: "Sair",
     onClick: () => {
       sessionStorage.clear();
       window.location.href = "/login";
