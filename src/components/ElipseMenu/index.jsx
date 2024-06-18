@@ -6,9 +6,6 @@ import EditIcon from "@mui/icons-material/Edit";
 import Divider from "@mui/material/Divider";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import AlertDialog from "../AlertDialog/index";
-import { GoHeart } from "react-icons/go";
-import { useFavoriteContext } from "../../contexts/Favorite";
-import { GoHeartFill } from "react-icons/go";
 
 const StyledMenu = styled((props) => (
   <Menu
