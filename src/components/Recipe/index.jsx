@@ -47,7 +47,7 @@ const Recipe = ({
       <ElipseMenu id={id} />
       <div
         className="text-black"
-        style={{ marginRight: "5px", marginTop:"15px", fontSize: "20px" }}
+        style={{ marginRight: "20px", marginTop:"17px", fontSize: "17px" }}
         onClick={() => {
           addFavorite({
             id,

@@ -1,11 +1,18 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 export const FavoritesContext = createContext();
 
 FavoritesContext.displayName = "Favoritos";
 
-export default function FavoritesProvider({ children }) { 
-  const [favorite, setFavorite] = useState([]);
+export default function FavoritesProvider({ children }) {
+  const [favorite, setFavorite] = useState(() => {
+    const storedFavorites = localStorage.getItem("favorites");
+    return storedFavorites ? JSON.parse(storedFavorites) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("favorites", JSON.stringify(favorite));
+  }, [favorite]);
 
   return (
     <FavoritesContext.Provider value={{ favorite, setFavorite }}>
@@ -19,7 +26,6 @@ export function useFavoriteContext() {
 
   function addFavorite(newFavorite) {
     const favoriteRepeated = favorite.some(
-      
       (item) => item.id === newFavorite.id
     );
 
@@ -27,11 +33,11 @@ export function useFavoriteContext() {
 
     if (!favoriteRepeated) {
       newList.push(newFavorite);
-      return setFavorite(newList);
+    } else {
+      newList = newList.filter(item => item.id !== newFavorite.id);
     }
 
-    newList.splice(newList.indexOf(newFavorite), 1);
-    return setFavorite(newList);
+    setFavorite(newList);
   }
 
   return {
