@@ -24,7 +24,7 @@ const MyRecipesFeed = () => {
   }, []);
 
   function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+    return string?.charAt(0).toUpperCase() + string?.slice(1).toLowerCase();
   }
 
   return (
@@ -34,14 +34,14 @@ const MyRecipesFeed = () => {
       ) : recipes.length > 0 ? (
         recipes.map((recipe) => (
           <Recipe
-            key={recipe._id}
-            id={recipe._id}
-            description={recipe.description}
-            title={capitalizeFirstLetter(recipe.title)}
+            key={recipe?._id}
+            id={recipe?._id}
+            description={recipe?.description}
+            title={capitalizeFirstLetter(recipe?.title)}
             ingredients={recipe.ingredients.toLowerCase()}
-            instructions={capitalizeFirstLetter(recipe.instructions)}
-            img_url={recipe.img_url}
-            main_ingredients={recipe.mainIngredient}
+            instructions={capitalizeFirstLetter(recipe?.instructions)}
+            img_url={recipe?.img_url}
+            main_ingredients={recipe?.mainIngredient}
           />
         ))
       ) : (
