@@ -1,119 +1,170 @@
-import { useState } from "react";
-import { MdAddToPhotos } from "react-icons/md";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { insertRecipe } from "../../api/User/index";
 
-export default function AddRecipe() {
-  const [recipeName, setRecipeName] = useState("");
-  const [ingredients, setIngredients] = useState("");
-  const [description, setDescription] = useState("");
-  const [mainIngredient, setMainIngredient] = useState("");
-  const [instructions, setInstructions] = useState("");
-  const [imgUrl, setImgUrl] = useState("");
+const AddRecipe = () => {
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const [formData, setFormData] = useState({
+    title: "",
+    ingredients: "",
+    description: "",
+    mainIngredient: "",
+    instructions: "",
+    img_url: "",
+  });
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const newRecipe = {
-      title: recipeName,
-      description: description,
-      mainIngredient: mainIngredient,
-      ingredients: ingredients,
-      instructions: instructions,
-      img_url: imgUrl,
-    };
 
-    // Logic to send the newRecipe object to your backend (e.g., using fetch or axios)
-    console.log("New Recipe:", newRecipe);
-    // ... (Your logic to send data to backend)
+    setIsLoading(true);
+    try {
+      await insertRecipe(formData);
+      navigate("/recipes");
+    } catch (error) {
+      setError(error.message);
+      console.error("Erro ao registrar receita:", error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
-    <div className="form-container flex flex-col mt-0 gap-10 items-left shadow-md p-10 rounded-3xl bg-slate-50 h-full w-full">
-      <form onSubmit={handleSubmit} className="form-wrapper rounded-lg w-full">
-        <h2 className="form-title text-2xl mb-5">Create Your Recipe</h2>
-        <label htmlFor="recipeName" className="form-label block text-base mb-1">
-          Recipe Name
-        </label>
-        <input
-          id="recipeName"
-          type="text"
-          placeholder="Recipe Name"
-          value={recipeName}
-          onChange={(e) => setRecipeName(e.target.value)}
-          className="form-input w-full sm:w-[calc(100%-32px)] border border-gray-300 rounded-md p-3 text-base mb-3"
-        />
-        <label
-          htmlFor="ingredients"
-          className="form-label block text-base mb-1"
-        >
-          Ingredients
-        </label>
-        <textarea
-          id="ingredients"
-          placeholder="Ingredients"
-          value={ingredients}
-          onChange={(e) => setIngredients(e.target.value)}
-          className="form-textarea w-full border border-gray-300 rounded-md p-3 text-base mb-3"
-          rows={2}
-        />
-        <label
-          htmlFor="mainIngredient"
-          className="form-label block text-base mb-1"
-        >
-          Main Ingredient
-        </label>
-        <input
-          id="mainIngredient"
-          type="text"
-          placeholder="Main Ingredient"
-          value={mainIngredient}
-          onChange={(e) => setMainIngredient(e.target.value)}
-          className="form-input w-full sm:w-[calc(100%-32px)] border border-gray-300 rounded-md p-3 text-base mb-3"
-        />
-        <label
-          htmlFor="description"
-          className="form-label block text-base mb-1"
-        >
-          Description
-        </label>
-        <textarea
-          id="description"
-          placeholder="Description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          className="form-textarea w-full border border-gray-300 rounded-md p-3 text-base mb-3"
-          rows={3}
-        />
-        <label
-          htmlFor="instructions"
-          className="form-label block text-base mb-1"
-        >
-          Instructions
-        </label>
-        <textarea
-          id="instructions"
-          placeholder="Instructions"
-          value={instructions}
-          onChange={(e) => setInstructions(e.target.value)}
-          className="form-textarea w-full border border-gray-300 rounded-md p-3 text-base mb-3"
-          rows={5}
-        />
-        <label htmlFor="imgUrl" className="form-label block text-base mb-1">
-          Image URL
-        </label>
-        <input
-          id="imgUrl"
-          type="text"
-          placeholder="Image URL"
-          value={imgUrl}
-          onChange={(e) => setImgUrl(e.target.value)}
-          className="form-input w-full sm:w-[calc(100%-32px)] border border-gray-300 rounded-md p-3 text-base mb-3"
-        />
-        <button
-          type="submit"
-          className="form-submit bg-gradient-to-r from-indigo-500 to-purple-600 p-4 text-white rounded-md px-6 py-3 text-lg cursor-pointer"
-        >
-          Cadastrar
-        </button>
-      </form>
+    <div className="flex items-center justify-center rounded-3xl bg-gray-100 h-full w-full">
+      <div className="flex flex-col mt-0 gap-10 items-left shadow-md p-10 rounded-3xl bg-slate-50 h-full w-full">
+        <div className="p-8 flex flex-col items-center justify-center">
+          <h2 className="text-3xl font-semibold text-center text-indigo-600 mb-6">
+            Adicione Sua Receita!
+          </h2>
+          {error && (
+            <div className="mb-4 p-4 text-red-700 bg-red-100 rounded-lg">
+              {error}
+            </div>
+          )}
+          <form onSubmit={handleSubmit} className="space-y-4 w-full max-w-lg">
+            <div>
+              <label
+                htmlFor="title"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Nome da Receita
+              </label>
+              <input
+                type="text"
+                id="title"
+                name="title"
+                value={formData.title}
+                onChange={handleInputChange}
+                className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                placeholder="Bolo de Cenoura"
+              />
+            </div>
+            <div>
+              <label
+                htmlFor="ingredients"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Ingredientes
+              </label>
+              <textarea
+                id="ingredients"
+                name="ingredients"
+                value={formData.ingredients}
+                onChange={handleInputChange}
+                className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                placeholder="Cenoura, leite, chocolate..."
+                rows={2}
+              />
+            </div>
+            <div>
+              <label
+                htmlFor="mainIngredient"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Principal Ingrediente
+              </label>
+              <input
+                type="text"
+                id="mainIngredient"
+                name="mainIngredient"
+                value={formData.mainIngredient}
+                onChange={handleInputChange}
+                className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                placeholder="Cenoura"
+              />
+            </div>
+            <div>
+              <label
+                htmlFor="description"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Descrição
+              </label>
+              <textarea
+                id="description"
+                name="description"
+                value={formData.description}
+                onChange={handleInputChange}
+                className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                placeholder="Brasileira"
+                rows={3}
+              />
+            </div>
+            <div>
+              <label
+                htmlFor="instructions"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Instruções
+              </label>
+              <textarea
+                id="instructions"
+                name="instructions"
+                value={formData.instructions}
+                onChange={handleInputChange}
+                className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                placeholder="Rale a cenoura e coloque ela dentro de um pote..."
+                rows={5}
+              />
+            </div>
+            <div>
+              <label
+                htmlFor="img_url"
+                className="block text-sm font-medium text-gray-700"
+              >
+                URL da Imagem
+              </label>
+              <input
+                type="text"
+                id="img_url"
+                name="img_url"
+                value={formData.img_url}
+                onChange={handleInputChange}
+                className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                placeholder="https://site.com.br/images"
+              />
+            </div>
+            <div className="flex items-center justify-center">
+              <button
+                type="submit"
+                className="py-2 px-4 bg-indigo-600 text-white font-medium rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                disabled={isLoading}
+              >
+                {isLoading ? "Carregando..." : "Cadastrar Receita"}
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   );
-}
+};
+
+export default AddRecipe;

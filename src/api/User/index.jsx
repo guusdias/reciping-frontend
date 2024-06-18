@@ -6,17 +6,21 @@ const storeRecipes = (recipes) => {
 
 const getStoredRecipes = () => {
   const storedRecipes = localStorage.getItem("recipes");
-  if (storedRecipes) {
-    return JSON.parse(storedRecipes);
-  }
-  return [];
+  return storedRecipes ? JSON.parse(storedRecipes) : [];
 };
 
+const getUser = () => JSON.parse(sessionStorage.getItem("user"));
+
 const fetchRecipesByUser = async () => {
+  const user = getUser();
+  if (!user || !user.id) {
+    console.error("Usuário não encontrado ou ID inválido.");
+    return getStoredRecipes();
+  }
+
   try {
-    //CHANGE THE ID HERE DONT FORGET
     const response = await Axios.get(
-      "https://reciping-backend.onrender.com/user/661c99c8a9f771850716c5b9/recipes"
+      `https://reciping-backend.onrender.com/user/${user.id}/recipes`
     );
     const recipes = response.data.recipes;
     storeRecipes(recipes);
@@ -58,8 +62,38 @@ export const registerUser = async (userData) => {
     );
     return response.data;
   } catch (error) {
+    console.error("Erro ao registrar usuário:", error);
     throw new Error("Erro ao registrar usuário.");
   }
 };
 
-export default { fetchRecipesByUser, fetchAllRecipes, registerUser };
+export const insertRecipe = async (userData) => {
+  const user = getUser();
+  if (!user || !user.id) {
+    throw new Error("Usuário não encontrado ou ID inválido.");
+  }
+
+  try {
+    const recipeData = { ...userData };
+    const response = await Axios.post(
+      `https://reciping-backend.onrender.com/user/${user.id}/recipes`,
+      recipeData,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Erro ao inserir receita:", error);
+    throw new Error("Erro ao inserir receita.");
+  }
+};
+
+export default {
+  fetchRecipesByUser,
+  fetchAllRecipes,
+  registerUser,
+  insertRecipe,
+};
