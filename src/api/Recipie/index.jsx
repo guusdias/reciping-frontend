@@ -14,10 +14,6 @@ const fetchRecipes = async () => {
 
 const deleteRecipeById = async (recipeId) => {
   try {
-    console.log(
-      "URL da requisição DELETE:",
-      `https://reciping-backend.onrender.com/recipes/${recipeId}`
-    );
     const response = await Axios.delete(
       `https://reciping-backend.onrender.com/recipes/${recipeId}`
     );

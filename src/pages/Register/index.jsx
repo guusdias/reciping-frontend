@@ -35,7 +35,6 @@ const Register = () => {
     try {
       const newUser = { user_name, email, password, user_img, recipes: [] };
       const data = await registerUser(newUser);
-      console.log("User registered:", data);
       setError("");
       navigate("/login");
     } catch (error) {

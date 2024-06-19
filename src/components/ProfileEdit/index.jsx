@@ -32,7 +32,6 @@ const ProfileEdit = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
     setFormData({
       name: "",
       email: "",

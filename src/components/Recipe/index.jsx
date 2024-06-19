@@ -13,8 +13,6 @@ const Recipe = ({
   mainIngredient,
   showElipse,
 }) => {
-  console.log("id recebido na receita", id);
-
   const { favorite, addFavorite } = useFavoriteContext();
   const isFavorite = favorite.some((fav) => fav.id === id);
   const Icon = isFavorite ? GoHeartFill : GoHeart;

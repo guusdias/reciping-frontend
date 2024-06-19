@@ -22,7 +22,6 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form data being submitted:", formData);
     try {
       const response = await makeAuth({
         email: formData.email,

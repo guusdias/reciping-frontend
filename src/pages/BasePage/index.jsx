@@ -1,13 +1,20 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Sidebar from "../../components/SidebarContainer";
 import Header from "../../components/Header";
 import FavoritesProvider from "../../contexts/Favorite";
 import Footer from "../../components/Footer";
 
 export default function BasePage() {
+  const location = useLocation();
+
+  const showSearch =
+    location.pathname === "/feed" ||
+    location.pathname === "/recipes" ||
+    location.pathname === "/favorites";
+
   return (
     <main className="flex flex-col h-screen bg-gray-200">
-      <Header />
+      <Header showSearch={showSearch} />
       <div className="flex flex-1 gap-4 py-4 px-8">
         <aside className="bg-gray-200 w-1/4 flex flex-col justify-center items-center h-full">
           <Sidebar />
