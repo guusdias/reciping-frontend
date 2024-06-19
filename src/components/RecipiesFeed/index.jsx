@@ -48,7 +48,8 @@ const RecipesFeed = () => {
             ingredients={recipe.ingredients}
             instructions={recipe.instructions}
             img_url={recipe.img_url}
-            main_ingredients={recipe.mainIngredient}
+            mainIngredient={recipe.mainIngredient}
+            showElipse={true}
           />
         ))
       ) : (

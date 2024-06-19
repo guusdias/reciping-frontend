@@ -1,9 +1,7 @@
-// components/Recipe.js
 import React from "react";
 import ElipseMenu from "../ElipseMenu";
-import { GoHeart } from "react-icons/go";
+import { GoHeart, GoHeartFill } from "react-icons/go";
 import { useFavoriteContext } from "../../contexts/Favorite";
-import { GoHeartFill } from "react-icons/go";
 
 const Recipe = ({
   id,
@@ -13,6 +11,7 @@ const Recipe = ({
   instructions,
   img_url,
   mainIngredient,
+  showElipse,
 }) => {
   console.log("id recebido na receita", id);
 
@@ -44,10 +43,10 @@ const Recipe = ({
           <p className="text-gray-700">{mainIngredient}</p>
         </div>
       </div>
-      <ElipseMenu id={id} />
+      {!showElipse && <ElipseMenu id={id} />}
       <div
         className="text-black"
-        style={{ marginRight: "20px", marginTop:"17px", fontSize: "17px" }}
+        style={{ marginRight: "20px", marginTop: "17px", fontSize: "17px" }}
         onClick={() => {
           addFavorite({
             id,
@@ -56,7 +55,7 @@ const Recipe = ({
             ingredients,
             instructions,
             img_url,
-            mainIngredient
+            mainIngredient,
           });
         }}
       >

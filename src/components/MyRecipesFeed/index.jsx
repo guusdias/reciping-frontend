@@ -42,6 +42,7 @@ const MyRecipesFeed = () => {
             instructions={capitalizeFirstLetter(recipe?.instructions)}
             img_url={recipe?.img_url}
             main_ingredients={recipe?.mainIngredient}
+            showElipse={false}
           />
         ))
       ) : (
