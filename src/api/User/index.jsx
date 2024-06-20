@@ -10,9 +10,9 @@ const getStoredRecipes = () => {
 };
 
 const getUser = () => JSON.parse(sessionStorage.getItem("user"));
+const user = getUser();
 
 const fetchRecipesByUser = async () => {
-  const user = getUser();
   if (!user || !user.id) {
     console.error("Usuário não encontrado ou ID inválido.");
     return getStoredRecipes();
@@ -91,9 +91,22 @@ export const insertRecipe = async (userData) => {
   }
 };
 
+const deleteRecipeById = async (recipeId) => {
+  try {
+    const response = await Axios.delete(
+      `https://reciping-backend.onrender.com/user/${user.id}/recipes/${recipeId}`
+    );
+    return response.data;
+  } catch (error) {
+    console.error(`Error deleting recipe with ID ${recipeId}:`, error);
+    throw error;
+  }
+};
+
 export default {
   fetchRecipesByUser,
   fetchAllRecipes,
   registerUser,
   insertRecipe,
+  deleteRecipeById,
 };
