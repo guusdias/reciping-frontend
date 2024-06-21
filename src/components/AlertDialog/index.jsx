@@ -1,4 +1,5 @@
 import { useState, Fragment } from "react";
+import { useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
@@ -6,10 +7,11 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Delete from "@mui/icons-material/Delete";
-import api from "../../api/Recipie/index";
+import api from "../../api/User/index";
 
 export default function AlertDialog({ id }) {
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -23,7 +25,7 @@ export default function AlertDialog({ id }) {
     try {
       await api.deleteRecipeById(id);
       handleClose();
-      getRecipes(); // Chama a função para atualizar a lista de receitas após a exclusão
+      navigate("/feed");
     } catch (error) {
       console.error("Erro em deletar a receita:", error);
     }

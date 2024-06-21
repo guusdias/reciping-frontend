@@ -105,7 +105,7 @@ const AddRecipe = () => {
                 htmlFor="description"
                 className="block text-sm font-medium text-gray-700"
               >
-                Descrição
+                Região Típica
               </label>
               <textarea
                 id="description"

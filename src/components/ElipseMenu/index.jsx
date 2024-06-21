@@ -50,7 +50,7 @@ const StyledMenu = styled((props) => (
   },
 }));
 
-export default function ElipseMenu({ id }) {
+export default function ElipseMenu({ id, onEdit }) {
   const [anchorEl, setAnchorEl] = useState(null);
   const [openAlertDialog, setOpenAlertDialog] = useState(false);
 
@@ -80,7 +80,10 @@ export default function ElipseMenu({ id }) {
             color: "rgb(55, 65, 81)",
             fontWeight: "none",
           }}
-          onClick={handleClose}
+          onClick={() => {
+            handleClose();
+            onEdit();
+          }}
           disableRipple
         >
           <EditIcon />
