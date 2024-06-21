@@ -34,6 +34,10 @@ const RecipesFeed = () => {
     fetchRecipes();
   }, []);
 
+  function capitalizeFirstLetter(string) {
+    return string?.charAt(0).toUpperCase() + string?.slice(1).toLowerCase();
+  }
+
   return (
     <div className="flex flex-col mt-0 gap-10 items-left shadow-md p-10 rounded-3xl bg-slate-50 h-full w-full">
       {isLoading ? (
@@ -45,7 +49,7 @@ const RecipesFeed = () => {
             id={recipe._id}
             description={recipe.description}
             title={recipe.title}
-            ingredients={recipe.ingredients}
+            ingredients={recipe.ingredients.toLowerCase()}
             instructions={recipe.instructions}
             img_url={recipe.img_url}
             mainIngredient={recipe.mainIngredient}
