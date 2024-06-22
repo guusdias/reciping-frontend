@@ -15,6 +15,8 @@ const RecipesFeed = () => {
         const formattedRecipes = response.recipes
           .filter((recipe) => recipe._doc)
           .map((recipe) => ({
+            user_img: recipe.$__parent.user_img,
+            user_name: recipe.$__parent.user_name,
             title: recipe._doc.title,
             description: recipe._doc.description,
             mainIngredient: recipe._doc.mainIngredient,
@@ -47,6 +49,8 @@ const RecipesFeed = () => {
           <Recipe
             key={recipe._id}
             id={recipe._id}
+            user_name={recipe.user_name}
+            user_img={recipe.user_img}
             description={recipe.description}
             title={recipe.title}
             ingredients={recipe.ingredients.toLowerCase()}
