@@ -43,12 +43,14 @@ const Login = () => {
   return (
     <div className="flex items-center justify-center bg-gray-100 h-screen">
       <div className="flex w-full bg-white rounded-lg shadow-lg overflow-hidden h-screen">
-        <div className="hidden md:flex md:w-1/2 bg-gradient-to-r from-indigo-500 to-purple-600 items-center justify-center">
-          <div className="text-white text-4xl font-bold">Welcome Back!</div>
+        <div className="hidden md:flex md:w-1/2 bg-gradient-to-r from-yellow-500 via-orange-500 to-red-600 items-center justify-center">
+          <div className="text-white text-4xl font-bold">
+            Bem-vindo ao Reciping!
+          </div>
         </div>
         <div className="w-full md:w-1/2 p-8 flex items-center justify-center flex-col">
-          <h2 className="text-3xl font-semibold text-center text-indigo-600 mb-6">
-            Login
+          <h2 className="text-3xl font-semibold text-center text-orange-500 mb-6">
+            Faça seu login
           </h2>
           {error && (
             <div className="mb-4 p-4 text-red-700 bg-red-100 rounded-lg">
@@ -69,7 +71,7 @@ const Login = () => {
                 name="email"
                 value={formData.email}
                 onChange={handleInputChange}
-                className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
                 placeholder="seu@email.com"
               />
             </div>
@@ -86,7 +88,7 @@ const Login = () => {
                 name="password"
                 value={formData.password}
                 onChange={handleInputChange}
-                className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
                 placeholder="Coloque a sua senha"
               />
               <button
@@ -100,7 +102,7 @@ const Login = () => {
             <div className="flex items-center justify-between">
               <button
                 type="submit"
-                className="w-full py-2 px-4 bg-indigo-600 text-white font-medium rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="w-full py-2 px-4 bg-gradient-to-r from-yellow-500 via-orange-500 to-red-600 text-white font-medium rounded-md hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-orange-500"
               >
                 Login
               </button>
@@ -108,7 +110,7 @@ const Login = () => {
             <div className="text-center mt-4">
               <a
                 href="/register"
-                className="text-sm text-indigo-500 hover:text-indigo-700"
+                className="text-sm text-orange-500 hover:text-orange-700"
               >
                 Não tem uma conta? Clique e faça seu cadastro!
               </a>

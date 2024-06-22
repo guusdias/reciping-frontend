@@ -10,7 +10,7 @@ const SidebarData = ({ toggle }) => {
           key={data.id}
           className={`${
             toggle ? "last:w-[3.6rem]" : "last:w-[15rem]"
-          } sidebar last:absolute`}
+          } sidebar last:absolute hover:from-yellow-300`}
         >
           {data.onClick ? (
             <button onClick={data.onClick} className="flex items-center">

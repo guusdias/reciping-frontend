@@ -16,7 +16,7 @@ export default function Header({ recipes, setFilteredRecipes, showSearch }) {
   };
 
   return (
-    <header className="flex justify-between items-center py-4 px-8 bg-gradient-to-r from-indigo-500 to-purple-600 text-white">
+    <header className="flex justify-between items-center py-4 px-8 bg-gradient-to-r from-yellow-500 via-orange-500 to-red-600 text-white">
       <h1 className="text-3xl font-bold tracking-wide">Reciping</h1>
       <div
         className="flex items-center"
@@ -25,12 +25,12 @@ export default function Header({ recipes, setFilteredRecipes, showSearch }) {
         <input
           type="search"
           placeholder="Procurar por receitas..."
-          className="rounded-md px-4 py-2 bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-black"
+          className="rounded-md px-4 py-2 bg-gray-100 focus:outline-none focus:ring-3 focus:yellow-500 text-black"
           value={searchTerm}
           onChange={handleSearchChange}
         />
         <button
-          className="search-button ml-4 bg-indigo-700 text-white py-2 px-4 rounded-md hover:bg-indigo-800"
+          className="search-button ml-4 bg-yellow-500 text-white py-2 px-4 rounded-md hover:bg-yellow-600"
           onClick={handleSearch}
         >
           Buscar

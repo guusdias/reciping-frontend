@@ -148,13 +148,13 @@ const Recipe = ({
               </div>
               <div className="flex space-x-4">
                 <button
-                  className="py-2 px-4 bg-indigo-600 text-white border-2  border-indigo-600 font-medium rounded-md hover:bg-white  hover:text-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="py-2 px-4 bg-orange-500 text-white border-2  border-orange-500 font-medium rounded-md hover:bg-orange-600  hover:text-white focus:outline-none focus:ring-2 focus:ring-orange-500"
                   onClick={handleSaveClick}
                 >
                   Salvar
                 </button>
                 <button
-                  className="py-2 px-4 bg-white text-indigo-600 border-2 border-indigo-600 font-medium rounded-md hover:bg-indigo-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-500"
+                  className="py-2 px-4 bg-white text-orange-500 border-2 border-orange-500 font-medium rounded-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-500"
                   onClick={handleCancelClick}
                 >
                   Cancelar
