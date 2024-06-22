@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import api from "../../api/User/index";
 
 const ProfileEdit = () => {
+  const navigate = useNavigate();
   const user = JSON.parse(sessionStorage.getItem("user"));
 
   const [formData, setFormData] = useState({
@@ -18,10 +21,21 @@ const ProfileEdit = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Aqui você pode adicionar a lógica para enviar os dados para o backend
-    console.log("Form data submitted:", formData);
+    const updatedUser = {
+      user_name: formData.user_name,
+      email: formData.email,
+      password: formData.password,
+      user_img: formData.user_img,
+    };
+
+    try {
+      await api.updateUser(user._id, updatedUser); // Assume that user._id contains the user's ID
+      navigate("/feed");
+    } catch (error) {
+      console.error("Error updating user:", error);
+    }
   };
 
   return (

@@ -121,6 +121,21 @@ const updateRecipeById = async (recipeId, updatedRecipe) => {
   }
 };
 
+const updateUser = async (recipeId, updatedUser) => {
+  const user = getUser();
+
+  try {
+    const response = await Axios.put(
+      `https://reciping-backend.onrender.com/user/${user.id}`,
+      updatedUser
+    );
+    return response.data;
+  } catch (error) {
+    console.error(`Error updating recipe with ID ${recipeId}:`, error);
+    throw error;
+  }
+};
+
 export default {
   fetchRecipesByUser,
   fetchAllRecipes,
@@ -128,4 +143,5 @@ export default {
   insertRecipe,
   deleteRecipeById,
   updateRecipeById,
+  updateUser,
 };
