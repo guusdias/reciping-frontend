@@ -27,9 +27,9 @@ export default function BasePage() {
               <h1 className="text-4xl font-bold mt-2">Bem vindo ao Reciping</h1>
               <img
                 className="w-full rounded-3xl"
-                src="src/assets/svg/DrawKit-cooking-kitchen-food-vector-illustrations-01.svg"
+                src="https://raw.githubusercontent.com/guusdias/reciping-frontend/fa301733698687b762d443a13932d8e90dc1ade8/src/assets/svg/DrawKit-cooking-kitchen-food-vector-illustrations-01.svg"
                 alt="welcome_img"
-              />
+              ></img>
             </div>
           ) : (
             <FavoritesProvider>

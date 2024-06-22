@@ -44,7 +44,11 @@ const Login = () => {
     <div className="flex items-center justify-center bg-gray-100 h-screen">
       <div className="flex w-full bg-white rounded-lg shadow-lg overflow-hidden h-screen">
         <div className="md:flex md:w-1/2 bg-gradient-to-r from-yellow-500 via-orange-500 to-red-600 items-center justify-center flex-col">
-          <img className="w-2/6" src="src/assets/livro.png"></img>
+          <img
+            className="w-2/6"
+            src="https://raw.githubusercontent.com/guusdias/reciping-frontend/master/src/assets/livro.png"
+            alt="img_book"
+          />
         </div>
         <div className="w-full md:w-1/2 p-8 flex items-center justify-center flex-col">
           <h3 className="text-orange-500 text-4xl font-bold mb-10">
