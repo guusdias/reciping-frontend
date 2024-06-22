@@ -6,6 +6,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 const RecipesFeed = () => {
   const [recipes, setRecipes] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     const fetchRecipes = async () => {
@@ -40,12 +41,33 @@ const RecipesFeed = () => {
     return string?.charAt(0).toUpperCase() + string?.slice(1).toLowerCase();
   }
 
+  // Filtrar receitas pelo termo de busca
+  const filteredRecipes = recipes.filter((recipe) =>
+    recipe.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className="flex flex-col mt-0 gap-10 items-left shadow-md p-10 rounded-3xl bg-slate-50 h-full w-full">
+      <div className="mb-1 flex flex-col gap-2">
+        <label
+          htmlFor="recipeSearch"
+          className="mr-2 font-bold text-lg focus:ring-orange-500 focus:border-orange-500"
+        >
+          Buscar receita:
+        </label>
+        <input
+          type="text"
+          id="recipeSearch"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          placeholder="Digite o título da receita..."
+          className="p-2 border border-gray-300 rounded-md focus:ring-orange-500 focus:border-orange-500"
+        />
+      </div>
       {isLoading ? (
         <CircularProgress />
-      ) : recipes.length > 0 ? (
-        recipes.map((recipe) => (
+      ) : filteredRecipes.length > 0 ? (
+        filteredRecipes.map((recipe) => (
           <Recipe
             key={recipe._id}
             id={recipe._id}
