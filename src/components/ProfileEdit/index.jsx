@@ -26,12 +26,15 @@ const ProfileEdit = () => {
     const updatedUser = {
       user_name: formData.user_name,
       email: formData.email,
-      password: formData.password,
       user_img: formData.user_img,
     };
 
     try {
-      await api.updateUser(user._id, updatedUser); // Assume that user._id contains the user's ID
+      await api.updateUser(user._id, updatedUser);
+
+      const updatedUserData = { ...user, ...updatedUser };
+      sessionStorage.setItem("user", JSON.stringify(updatedUserData));
+
       navigate("/feed");
     } catch (error) {
       console.error("Error updating user:", error);
@@ -85,7 +88,7 @@ const ProfileEdit = () => {
                 className="flex-grow px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
               />
             </div>
-            <div className="flex items-center">
+            <div className="items-center hidden">
               <label
                 htmlFor="password"
                 className="w-1/4 mr-2 text-sm font-medium"
