@@ -43,15 +43,16 @@ const Login = () => {
   return (
     <div className="flex items-center justify-center bg-gray-100 h-screen">
       <div className="flex w-full bg-white rounded-lg shadow-lg overflow-hidden h-screen">
-        <div className="hidden md:flex md:w-1/2 bg-gradient-to-r from-yellow-500 via-orange-500 to-red-600 items-center justify-center">
-          <div className="text-white text-4xl font-bold">
-            Bem-vindo ao Reciping!
-          </div>
+        <div className="md:flex md:w-1/2 bg-gradient-to-r from-yellow-500 via-orange-500 to-red-600 items-center justify-center flex-col">
+          <img className="w-2/6" src="src/assets/livro.png"></img>
         </div>
         <div className="w-full md:w-1/2 p-8 flex items-center justify-center flex-col">
-          <h2 className="text-3xl font-semibold text-center text-orange-500 mb-6">
+          <h3 className="text-orange-500 text-4xl font-bold mb-10">
+            Bem-vindo ao Reciping!
+          </h3>
+          <h3 className="text-3xl font-semibold text-center text-gray-400 mb-6">
             Faça seu login
-          </h2>
+          </h3>
           {error && (
             <div className="mb-4 p-4 text-red-700 bg-red-100 rounded-lg">
               {error}
