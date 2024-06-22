@@ -163,7 +163,7 @@ const Recipe = ({
             <div className="mt-8 text-left">
               <p className="text-gray-700">{instructions}</p>
             </div>
-            <div className="mt-8 text-left">
+            <div className="mt-8 text-left hidden">
               <p className="text-gray-700">{mainIngredient}</p>
             </div>
           </>
