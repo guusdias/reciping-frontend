@@ -40,7 +40,7 @@ const AddRecipe = () => {
     <div className="flex items-center justify-center rounded-3xl bg-gray-100 h-full w-full">
       <div className="flex flex-col mt-0 gap-10 items-left shadow-md p-10 rounded-3xl bg-slate-50 h-full w-full">
         <div className="p-8 flex flex-col items-center justify-center">
-          <h2 className="text-3xl font-semibold text-center text-indigo-600 mb-6">
+          <h2 className="text-3xl font-semibold text-center text-orange-600 mb-6">
             Adicione Sua Receita!
           </h2>
           {error && (
@@ -62,7 +62,7 @@ const AddRecipe = () => {
                 name="title"
                 value={formData.title}
                 onChange={handleInputChange}
-                className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
                 placeholder="Bolo de Cenoura"
               />
             </div>
@@ -78,7 +78,7 @@ const AddRecipe = () => {
                 name="ingredients"
                 value={formData.ingredients}
                 onChange={handleInputChange}
-                className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
                 placeholder="Cenoura, leite, chocolate..."
                 rows={2}
               />
@@ -96,7 +96,7 @@ const AddRecipe = () => {
                 name="mainIngredient"
                 value={formData.mainIngredient}
                 onChange={handleInputChange}
-                className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
                 placeholder="Cenoura"
               />
             </div>
@@ -112,7 +112,7 @@ const AddRecipe = () => {
                 name="description"
                 value={formData.description}
                 onChange={handleInputChange}
-                className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
                 placeholder="Brasileira"
                 rows={3}
               />
@@ -129,7 +129,7 @@ const AddRecipe = () => {
                 name="instructions"
                 value={formData.instructions}
                 onChange={handleInputChange}
-                className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
                 placeholder="Rale a cenoura e coloque ela dentro de um pote..."
                 rows={5}
               />
@@ -147,14 +147,14 @@ const AddRecipe = () => {
                 name="img_url"
                 value={formData.img_url}
                 onChange={handleInputChange}
-                className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
                 placeholder="https://site.com.br/images"
               />
             </div>
             <div className="flex items-center justify-center">
               <button
                 type="submit"
-                className="py-2 px-4 bg-indigo-600 text-white font-medium rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="py-2 px-4 bg-yellow-500 text-white font-medium rounded-md hover:bg-orange-700 focus:outline-none focus:ring-2 focus:orange-500"
                 disabled={isLoading}
               >
                 {isLoading ? "Carregando..." : "Cadastrar Receita"}

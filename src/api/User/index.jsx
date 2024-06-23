@@ -38,6 +38,7 @@ const fetchAllRecipes = async () => {
       "https://reciping-backend.onrender.com/user/recipes/all"
     );
     const recipes = response.data;
+    window.dataLayer = recipes;
     storeRecipes(recipes);
     return recipes;
   } catch (error) {

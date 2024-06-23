@@ -72,7 +72,7 @@ const ProfileEdit = () => {
                 value={formData.user_name}
                 onChange={handleChange}
                 id="user_name"
-                className="flex-grow px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
+                className="flex-grow px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-orange-500"
               />
             </div>
             <div className="flex items-center">
@@ -85,7 +85,7 @@ const ProfileEdit = () => {
                 value={formData.email}
                 onChange={handleChange}
                 id="email"
-                className="flex-grow px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
+                className="flex-grow px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-orange-500"
               />
             </div>
             <div className="items-center hidden">
@@ -101,7 +101,7 @@ const ProfileEdit = () => {
                 value={formData.password}
                 onChange={handleChange}
                 id="password"
-                className="flex-grow px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
+                className="flex-grow px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-orange-500"
               />
             </div>
             <div className="flex items-center">
@@ -117,12 +117,12 @@ const ProfileEdit = () => {
                 value={formData.user_img}
                 onChange={handleChange}
                 id="user_img"
-                className="flex-grow px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
+                className="flex-grow px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-orange-500"
               />
             </div>
             <button
               type="submit"
-              className="py-2 px-4 bg-indigo-600 text-white font-medium rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="py-2 px-4 bg-yellow-500 text-white font-medium rounded-md hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-orange-500"
             >
               Salvar Alterações
             </button>
