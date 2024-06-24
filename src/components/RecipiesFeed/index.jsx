@@ -26,7 +26,7 @@ const RecipesFeed = () => {
             img_url: recipe._doc.img_url,
             _id: recipe._doc._id,
           }));
-        setRecipes(formattedRecipes);
+        setRecipes(shuffleArray(formattedRecipes));
       } catch (error) {
         console.error("Error fetching recipes:", error);
       } finally {
@@ -37,9 +37,18 @@ const RecipesFeed = () => {
     fetchRecipes();
   }, []);
 
-  function capitalizeFirstLetter(string) {
-    return string?.charAt(0).toUpperCase() + string?.slice(1).toLowerCase();
-  }
+  // Função para embaralhar o array de receitas
+  const shuffleArray = (array) => {
+    const shuffledArray = array.slice(); // Criar uma cópia do array
+    for (let i = shuffledArray.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffledArray[i], shuffledArray[j]] = [
+        shuffledArray[j],
+        shuffledArray[i],
+      ];
+    }
+    return shuffledArray;
+  };
 
   // Filtrar receitas pelo termo de busca
   const filteredRecipes = recipes.filter((recipe) =>
