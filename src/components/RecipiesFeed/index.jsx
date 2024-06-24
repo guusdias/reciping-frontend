@@ -80,6 +80,7 @@ const RecipesFeed = () => {
             img_url={recipe.img_url}
             mainIngredient={recipe.mainIngredient}
             showElipse={true}
+            imgDisplay={true}
           />
         ))
       ) : (

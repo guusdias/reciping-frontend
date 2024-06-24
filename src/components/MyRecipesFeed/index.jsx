@@ -39,6 +39,7 @@ const MyRecipesFeed = () => {
             img_url={recipe?.img_url}
             main_ingredients={recipe?.mainIngredient}
             showElipse={false}
+            imgDisplay={false}
           />
         ))
       ) : (

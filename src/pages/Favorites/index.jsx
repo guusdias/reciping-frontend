@@ -10,7 +10,14 @@ export default function Favorites() {
         {favorite.length > 0 ? (
           <section className="space-y-4">
             {favorite.map((fav) => {
-              return <Recipe showElipse={true} {...fav} key={fav.id} />;
+              return (
+                <Recipe
+                  showElipse={true}
+                  imgDisplay={false}
+                  {...fav}
+                  key={fav.id}
+                />
+              );
             })}
           </section>
         ) : (
