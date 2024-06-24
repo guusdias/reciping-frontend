@@ -21,3 +21,6 @@ Configure Tailwind CSS with Vite:
 Install the Windi CSS plugin: ``npm install vite-plugin-windicss --save-dev`` or ``yarn add vite-plugin-windicss --dev``.
 
 Run the project locally with ``npm run dev`` or ``yarn dev``.
+
+
+Authors: Gustavo Henrique Dias | Lucas Willian de Souza Serpa
