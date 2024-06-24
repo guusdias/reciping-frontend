@@ -40,8 +40,13 @@ export function useFavoriteContext() {
     setFavorite(newList);
   }
 
+  function removeFavorite(id) {
+    setFavorite(favorite.filter(item => item.id !== id));
+  }
+
   return {
     favorite,
     addFavorite,
+    removeFavorite,
   };
 }

@@ -8,10 +8,12 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Delete from "@mui/icons-material/Delete";
 import api from "../../api/User/index";
+import { useFavoriteContext } from "../../contexts/Favorite";
 
 export default function AlertDialog({ id }) {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
+  const { removeFavorite } = useFavoriteContext();
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -24,6 +26,7 @@ export default function AlertDialog({ id }) {
   const handleDelete = async () => {
     try {
       await api.deleteRecipeById(id);
+      removeFavorite(id);
       handleClose();
       navigate("/feed");
     } catch (error) {
