@@ -16,6 +16,7 @@ const Recipe = ({
   user_name,
   user_img,
   showElipse,
+  imgDisplay,
 }) => {
   const { favorite, addFavorite } = useFavoriteContext();
   const isFavorite = favorite.some((fav) => fav.id === id);
@@ -75,7 +76,7 @@ const Recipe = ({
 
   return (
     <div className="bg-white rounded-xl shadow-md overflow-hidden md:max-w-4xl flex flex-col justify-between">
-      {showElipse && (
+      {imgDisplay && (
         <div className="flex items-center mt-5 ml-7">
           <img
             src={user_img}
