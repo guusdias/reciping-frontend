@@ -1,0 +1,17 @@
+{
+  "category": {
+    "id": "clziui3zw0b5u07lyt88wcthk",
+    "name": {
+      "text": "T-shirt"
+    },
+    "slug": "t-shirts",
+    "description": "These are awesome t-shirts!",
+    "page": {
+      "productImage": {
+        "url": "https://sa-east-1.graphassets.com/clzgn0jzm0w3k07kldb0uhnne/clziof4oz079707ly954w2adr"
+      },
+      "price": 90,
+      "productId": "nylon-bomber-jacket-in-stone"
+    }
+  }
+}

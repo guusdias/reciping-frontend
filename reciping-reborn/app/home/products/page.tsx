@@ -1,3 +1,9 @@
+"use client";
+
 export default function Page() {
-  return <div>Prods page</div>;
+  return (
+    <div>
+      <ProductCart />
+    </div>
+  );
 }

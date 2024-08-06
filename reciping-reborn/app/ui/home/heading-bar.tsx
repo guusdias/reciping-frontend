@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { PowerIcon } from "@heroicons/react/24/outline";
+import { PowerIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import NavLinks from "@/app/ui/home/heading-links";
 
 export default function Header() {
@@ -29,7 +29,7 @@ export default function Header() {
               className="px-2 py-1 rounded"
             />
             <span className="absolute right-2 top-1/2 transform -translate-y-1/2">
-              🔍
+              <MagnifyingGlassIcon className="w-4 color-slate-800" />
             </span>
           </div>
         </div>
