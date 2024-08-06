@@ -1,58 +1,25 @@
+import { lusitana } from "@/app/ui/fonts";
 import Image from "next/image";
-import { FaGoogle, FaFacebook } from "react-icons/fa";
-import "./globals.css";
+import Link from "next/link";
 
-export default function Home() {
+export default function Page() {
   return (
-    <main className="flex items-center justify-center bg-gradient-to-r from-blue-100 to-purple-200 min-h-screen">
+    <main className="flex min-h-screen flex-col p-6 items-center justify-center bg-gray-50">
       <div className="flex w-full max-w-4xl bg-white rounded-xl shadow-lg overflow-hidden">
-        <div className="hidden md:flex md:w-1/2 bg-gradient-to-r from-yellow-500 via-orange-500 to-red-600 items-center justify-center flex-col p-10 relative">
+        <div className="hidden md:flex md:w-1/2 bg-gray-200 items-center justify-center flex-col p-10">
           <Image
-            className="absolute left-10 top-10"
-            src="/path/to/your/logo.png"
+            className="mb-4"
+            src="/logo.png"
             alt="logo"
-            width={100}
-            height={100}
+            width={350}
+            height={350}
           />
-          <div className="absolute bottom-10 left-10 text-white">
-            <p>2023. All rights reserved</p>
-          </div>
-          <div className="bg-white rounded-lg p-4 shadow-md mb-6 flex items-center">
-            <Image
-              src="/path/to/your/image/icon-message.png"
-              alt="message icon"
-              width={50}
-              height={50}
-            />
-            <div className="ml-4">
-              <p className="text-gray-700 text-sm">
-                New message in the last 24 hours
-              </p>
-              <p className="text-gray-900 text-2xl font-bold">16,048</p>
-              <p className="text-green-500 text-sm">+3%</p>
-            </div>
-          </div>
-          <div className="bg-white rounded-lg p-4 shadow-md flex items-center">
-            <Image
-              src="/path/to/your/image/icon-users.png"
-              alt="users icon"
-              width={50}
-              height={50}
-            />
-            <div className="ml-4">
-              <p className="text-gray-700 text-sm">
-                New users in the last 24 hours
-              </p>
-              <p className="text-gray-900 text-2xl font-bold">16,048</p>
-              <p className="text-red-500 text-sm">-15%</p>
-            </div>
-          </div>
+          <p className={`${lusitana.className} text-gray-700 text-lg`}>
+            A new way to find your perfect clothe!
+          </p>
         </div>
         <div className="w-full md:w-1/2 p-10 flex flex-col items-center justify-center">
-          <h3 className="text-gray-800 text-3xl font-bold mb-6">
-            Welcome back!
-          </h3>
-          <h4 className="text-xl font-medium text-gray-600 mb-6">Log in</h4>
+          <h3 className="text-gray-800 text-3xl font-bold mb-6">Welcome!</h3>
           <form method="post" className="space-y-6 w-full">
             <div>
               <label
@@ -65,7 +32,7 @@ export default function Home() {
                 type="email"
                 id="email"
                 name="email"
-                className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-gray-500"
                 placeholder="Your email"
               />
             </div>
@@ -80,20 +47,20 @@ export default function Home() {
                 type="password"
                 id="password"
                 name="password"
-                className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-gray-500 focus:border-gray-500"
                 placeholder="Your password"
               />
             </div>
             <button
               type="submit"
-              className="w-full py-2 px-4 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full py-2 px-4 bg-gray-700 text-white font-medium rounded-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-500"
             >
               Log in
             </button>
             <div className="flex items-center justify-between mt-4">
               <a
                 href="/forgot-password"
-                className="text-sm text-blue-500 hover:text-blue-700"
+                className="text-sm text-gray-500 hover:text-gray-700"
               >
                 Forgot password?
               </a>
@@ -108,24 +75,22 @@ export default function Home() {
                 type="button"
                 className="flex items-center justify-center w-full py-2 px-4 bg-white border border-gray-300 rounded-md shadow-sm text-gray-700 font-medium hover:bg-gray-100"
               >
-                <FaGoogle className="mr-2" />
                 Google
               </button>
               <button
                 type="button"
                 className="flex items-center justify-center w-full py-2 px-4 bg-white border border-gray-300 rounded-md shadow-sm text-gray-700 font-medium hover:bg-gray-100 ml-4"
               >
-                <FaFacebook className="mr-2" />
                 Facebook
               </button>
             </div>
             <div className="text-center mt-6">
-              <a
+              <Link
                 href="/register"
-                className="text-sm text-blue-500 hover:text-blue-700"
+                className="text-sm text-gray-500 hover:text-gray-700"
               >
                 Don't have an account? Sign up
-              </a>
+              </Link>
             </div>
           </form>
         </div>
