@@ -1,17 +1,27 @@
 import React from "react";
+import Image from "next/image";
+import { PowerIcon } from "@heroicons/react/24/outline";
 import NavLinks from "@/app/ui/home/heading-links";
 
 export default function Header() {
   return (
-    <header className="bg-gray-900 p-4">
+    <header className="bg-gray-100 p-4">
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center">
-          <img src="/logo.png" alt="Logo" className="h-8" />
+          <Image
+            className="mb-4"
+            src="/logo.png"
+            alt="logo"
+            width={75}
+            height={75}
+          />
         </div>
         <NavLinks />
+        <button className="flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-slate-100 text-slate-70 p-3 text-sm font-medium  hover:bg-slate-200 hover:text-slate-800 md:flex-none md:justify-start md:p-2 md:px-3">
+          <PowerIcon className="w-6" />
+          <div className="hidden md:block">Sign Out</div>
+        </button>
         <div className="flex items-center space-x-4">
-          <button className="text-white">Fazer login</button>
-          <button className="text-white">Criar conta</button>
           <div className="relative">
             <input
               type="text"
