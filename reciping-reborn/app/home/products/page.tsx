@@ -1,9 +1,12 @@
-"use client";
+import ProductCard from "@/app/ui/home/products/product-card";
+import { getShirtsData } from "@/app/lib/actions";
 
-export default function Page() {
+export default async function Page() {
+  const products = await getShirtsData();
+
   return (
     <div>
-      <ProductCart />
+      <ProductCard products={products} />
     </div>
   );
 }

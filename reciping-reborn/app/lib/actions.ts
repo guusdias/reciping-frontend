@@ -1,23 +1,27 @@
+"use server";
 import { fetchHygraphQuery } from "@/app/lib/fetch-hygraph-query";
+import { Product } from "@/app/lib/definitions";
 
-export const getPageData = async () => {
+export const getShirtsData = async (): Promise<Product[]> => {
   const query = `
-query MyQuery {
-  category(where: {slug: "t-shirts"}) {
-    id
-    name {
-      text
-    }
-    slug
-    description
-    page {
-      productImage {
-        url
+    query MyQuery {
+      category(where: {slug: "t-shirts"}) {
+        id
+        name {
+          text
+        }
+        slug
+        description
+        page {
+          productImage {
+            url
+          }
+          price
+          productId
+        }
       }
-      price
-      productId
     }
-  }
-}   `;
-  return fetchHygraphQuery(query);
+  `;
+  const data = await fetchHygraphQuery(query);
+  return data.category.page ? [data.category.page] : [];
 };

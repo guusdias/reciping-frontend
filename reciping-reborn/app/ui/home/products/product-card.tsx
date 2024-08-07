@@ -1,16 +1,21 @@
-"use client";
 import Image from "next/image";
-import { Category } from "@/app/lib/definitions";
+import { Product } from "@/app/lib/definitions";
 
-export default async function ProductCart({
-  products,
-}: {
-  products: Category[];
-}) {
+interface ProductCardProps {
+  products: Product[];
+}
+
+export default function ProductCard({ products }: ProductCardProps) {
   return (
     <div className="w-full">
-      {products?.map((product) => (
-        <Image src={product.productImage}></Image>
+      {products.map((product) => (
+        <Image
+          key={product.productId}
+          alt="product-image"
+          src={product.productImage.url}
+          width={200}
+          height={200}
+        />
       ))}
     </div>
   );
