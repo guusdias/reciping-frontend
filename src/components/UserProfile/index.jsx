@@ -1,37 +1,90 @@
+import React from "react";
 import PropTypes from "prop-types";
+import { styled } from "../../../stitches.config";
 
-const UserProfile = ({ toggle }) => {
-  const user = JSON.parse(sessionStorage.getItem("user"));
+const Container = styled("div", {
+  display: "flex",
+  gap: "$medium",
+  alignItems: "center",
+  transition: "all 300ms ease",
+
+  variants: {
+    toggle: {
+      true: {
+        backgroundColor: "none",
+        delay: "200ms",
+      },
+      false: {
+        backgroundColor: "$backgroundColor",
+        borderRadius: "$medium",
+        padding: "$medium",
+      },
+    },
+  },
+});
+
+const ImageWrapper = styled("div", {
+  minWidth: "3.5rem",
+  height: "3.5rem",
+  borderRadius: "50%",
+  overflow: "hidden",
+});
+
+const Image = styled("img", {
+  width: "100%",
+  height: "100%",
+  borderRadius: "50%",
+  objectFit: "cover",
+});
+
+const InfoWrapper = styled("div", {
+  variants: {
+    toggle: {
+      true: {
+        opacity: 0,
+        transitionDelay: "200ms",
+      },
+      false: {
+        opacity: 1,
+      },
+    },
+  },
+});
+
+const UserName = styled("h3", {
+  fontSize: "$lg",
+  color: "$textColor",
+});
+
+const UserEmail = styled("span", {
+  fontSize: "0.75rem",
+  opacity: 0.6,
+  color: "$textColor",
+});
+
+const UserProfile = ({ toggle, user }) => {
+  if (!user) return null;
 
   return (
-    <div
-      className={`flex gap-5 items-center 
-    ${
-      toggle
-        ? "bg-none transition-all duration-300 delay-200"
-        : "bg-white rounded-xl p-2"
-    }`}
-    >
-      <div className="min-w-[3.5rem] h-[3.5rem]">
-        <img
-          src={`${user.user_img}`}
-          alt="pic-profile"
-          className="w-full h-full rounded-full object-cover"
-        />
-      </div>
-
-      <div className={toggle ? "opacity-0 delay-200" : ""}>
-        <h3 className="text-xl text-black">{`${user.user_name}`}</h3>
-        <span className="text-[0.75rem] opacity-60 text-black">
-          {`${user.email}`}
-        </span>
-      </div>
-    </div>
+    <Container toggle={toggle}>
+      <ImageWrapper>
+        <Image src={user.user_img} alt="pic-profile" />
+      </ImageWrapper>
+      <InfoWrapper toggle={toggle}>
+        <UserName>{user.user_name}</UserName>
+        <UserEmail>{user.email}</UserEmail>
+      </InfoWrapper>
+    </Container>
   );
 };
 
 UserProfile.propTypes = {
-  toggle: PropTypes.bool.isRequired, // Validando que toggle é um booleano e é obrigatório
+  toggle: PropTypes.bool.isRequired,
+  user: PropTypes.shape({
+    user_img: PropTypes.string.isRequired,
+    user_name: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default UserProfile;

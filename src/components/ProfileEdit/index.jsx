@@ -1,6 +1,102 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { styled } from "../../../stitches.config";
 import api from "../../api/User/index";
+
+const Container = styled("div", {
+  display: "flex",
+  flexDirection: "column",
+  marginTop: "0",
+  gap: "10px",
+  alignItems: "center",
+  padding: "10px",
+  borderRadius: "24px",
+  backgroundColor: "$backgroundColor",
+  boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+  height: "100%",
+  width: "100%",
+});
+
+const ProfileSection = styled("div", {
+  display: "flex",
+  flexDirection: "row",
+  width: "100%",
+  justifyContent: "center",
+  alignItems: "center",
+});
+
+const PhotoWrapper = styled("div", {
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  width: "50%",
+});
+
+const ProfileImage = styled("img", {
+  borderRadius: "50%",
+  width: "200px",
+  height: "200px",
+  objectFit: "cover",
+  cursor: "pointer",
+  transition: "opacity 0.3s, filter 0.3s",
+
+  "&:hover": {
+    opacity: "0.5",
+    filter: "brightness(40%)",
+  },
+});
+
+const FormWrapper = styled("div", {
+  display: "flex",
+  flexDirection: "column",
+  width: "50%",
+  justifyContent: "center",
+  alignItems: "center",
+});
+
+const Form = styled("form", {
+  display: "flex",
+  flexDirection: "column",
+  gap: "16px",
+  width: "100%",
+});
+
+const FormField = styled("div", {
+  display: "flex",
+  alignItems: "center",
+});
+
+const Label = styled("label", {
+  width: "25%",
+  marginRight: "8px",
+  fontSize: "14px",
+  fontWeight: "500",
+});
+
+const Input = styled("input", {
+  flexGrow: 1,
+  padding: "8px",
+  borderRadius: "8px",
+  border: "1px solid $borderColor",
+  outline: "none",
+  "&:focus": {
+    borderColor: "$primary",
+    boxShadow: "0 0 0 2px rgba(255, 102, 0, 0.2)",
+  },
+});
+
+const SubmitButton = styled("button", {
+  padding: "10px 16px",
+  backgroundColor: "$primary",
+  color: "white",
+  fontSize: "16px",
+  fontWeight: "500",
+  borderRadius: "8px",
+  cursor: "pointer",
+  "&:hover": {
+    backgroundColor: "$secondary",
+  },
+});
 
 const ProfileEdit = () => {
   const navigate = useNavigate();
@@ -42,94 +138,66 @@ const ProfileEdit = () => {
   };
 
   return (
-    <div className="flex flex-col mt-0 gap-10 items-center shadow-md p-10 rounded-3xl bg-slate-50 h-full w-full">
-      <div className="flex flex-row">
-        <div className="profile-edit flex items-center justify-center w-1/2">
-          <div className="photo-input flex items-center justify-center mb-10">
-            <img
-              src={formData.user_img || "default-profile.png"}
-              alt="profile photo"
-              className="rounded-full w-62 h-62 object-cover"
-            />
-          </div>
-        </div>
+    <Container>
+      <ProfileSection>
+        <PhotoWrapper>
+          <ProfileImage
+            src={formData.user_img || "default-profile.png"}
+            alt="profile photo"
+          />
+        </PhotoWrapper>
 
-        <div className="form-profile flex flex-col w-1/2 items-center justify-center">
-          <form
-            onSubmit={handleSubmit}
-            className="flex flex-col gap-5 justify-center"
-          >
-            <div className="flex items-center">
-              <label
-                htmlFor="user_name"
-                className="w-1/4 mr-2 text-sm font-medium"
-              >
-                Nome:
-              </label>
-              <input
+        <FormWrapper>
+          <Form onSubmit={handleSubmit}>
+            <FormField>
+              <Label htmlFor="user_name">Nome:</Label>
+              <Input
                 type="text"
                 name="user_name"
                 value={formData.user_name}
                 onChange={handleChange}
                 id="user_name"
-                className="flex-grow px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-orange-500"
               />
-            </div>
-            <div className="flex items-center">
-              <label htmlFor="email" className="w-1/4 mr-2 text-sm font-medium">
-                Email:
-              </label>
-              <input
+            </FormField>
+
+            <FormField>
+              <Label htmlFor="email">Email:</Label>
+              <Input
                 type="email"
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
                 id="email"
-                className="flex-grow px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-orange-500"
               />
-            </div>
-            <div className="items-center hidden">
-              <label
-                htmlFor="password"
-                className="w-1/4 mr-2 text-sm font-medium"
-              >
-                Senha:
-              </label>
-              <input
+            </FormField>
+
+            <FormField className="hidden">
+              <Label htmlFor="password">Senha:</Label>
+              <Input
                 type="password"
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
                 id="password"
-                className="flex-grow px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-orange-500"
               />
-            </div>
-            <div className="flex items-center">
-              <label
-                htmlFor="user_img"
-                className="w-1/4 mr-2 text-sm font-medium"
-              >
-                URL da Foto:
-              </label>
-              <input
+            </FormField>
+
+            <FormField>
+              <Label htmlFor="user_img">URL da Foto:</Label>
+              <Input
                 type="text"
                 name="user_img"
                 value={formData.user_img}
                 onChange={handleChange}
                 id="user_img"
-                className="flex-grow px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-orange-500"
               />
-            </div>
-            <button
-              type="submit"
-              className="py-2 px-4 bg-yellow-500 text-white font-medium rounded-md hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-orange-500"
-            >
-              Salvar Alterações
-            </button>
-          </form>
-        </div>
-      </div>
-    </div>
+            </FormField>
+
+            <SubmitButton type="submit">Salvar Alterações</SubmitButton>
+          </Form>
+        </FormWrapper>
+      </ProfileSection>
+    </Container>
   );
 };
 
