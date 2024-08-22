@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import SearchInput from "../components/SearchInput";
-import RecipeCard from "../components/RecipeCard";
-import LoadingSpinner from "../components/LoadingSpinner";
+import SearchInput from "../SearchInput/index.jsx";
+import RecipeCard from "../RecipeCard/index.jsx";
+import LoadingSpinner from "../LoadingSpinner/index.jsx";
 import api from "../../api/User/index.jsx";
 
 const RecipesFeed = () => {
