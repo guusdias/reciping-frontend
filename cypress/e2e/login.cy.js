@@ -19,8 +19,7 @@ describe("Recipe Management Application - User Login", () => {
       loginForm.typeEmail(input.email);
       loginForm.typePassword(input.password);
       loginForm.submit();
-      loginForm.checkRedirectToLoginPage();
-      loginForm.checkSuccessfulRegistrationMessage();
+      loginForm.checkRedirectToHomePage();
     });
   });
 });

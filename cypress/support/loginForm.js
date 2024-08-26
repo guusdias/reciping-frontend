@@ -25,7 +25,7 @@ class LoginForm {
     this.elements.successMessage().should("be.visible");
   }
 
-  checkRedirectToLoginPage() {
+  checkRedirectToHomePage() {
     cy.url().should("include", "/");
   }
 

@@ -37,7 +37,7 @@ class RegisterForm {
     this.elements.successMessage().should("be.visible");
   }
 
-  checkRedirectToLoginPage() {
+  checkRedirectToHomePage() {
     cy.url().should("include", "/login");
   }
 
