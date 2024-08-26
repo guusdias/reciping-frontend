@@ -13,10 +13,8 @@ describe("Recipe Management Application - User Registration", () => {
     it("Should allow a user to register successfully", () => {
       cy.visit("/register");
 
-      // Certifique-se de que a página foi carregada
       cy.url().should("include", "/register");
 
-      // Aguarde o campo estar visível, se necessário
       cy.get('input[name="user_name"]', { timeout: 10000 }).should(
         "be.visible"
       );
