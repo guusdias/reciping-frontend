@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { registerUser } from "../../api/User/index";
+import { Message } from "@mui/icons-material";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -38,8 +39,7 @@ const Register = () => {
       setError("");
       navigate("/login");
     } catch (error) {
-      console.error("Failed to register user:", error);
-      setError("Falha ao registrar o usuário. Tente novamente.");
+      setError(error.response?.data?.message || "Erro ao registrar o usuário.");
     }
   };
 
