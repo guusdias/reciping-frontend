@@ -35,21 +35,17 @@ describe("Recipe Management Application - User Login", () => {
     };
 
     it("Should allow a user to add a recipe successfully", () => {
-      // Ensure user is logged in
       cy.visit("/login");
       loginForm.typeEmail("testuser@example.com");
       loginForm.typePassword("Password123");
       loginForm.submit();
       loginForm.checkRedirectToHomePage();
 
-      // Navigate to add recipe page
       cy.get('[href="/addRecipe"]').click();
       cy.url().should("include", "/addRecipe");
 
-      // Wait for the add recipe page to load
       cy.get('input[name="title"]', { timeout: 10000 }).should("be.visible");
 
-      // Fill out the add recipe form
       addRecipe.typeTitle(input.title);
       addRecipe.typeIngredients(input.ingredients);
       addRecipe.typeDescriptionTextArea(input.description);
