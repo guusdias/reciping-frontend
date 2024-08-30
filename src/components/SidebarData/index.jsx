@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { datas } from "../../utils/Data";
-import Link from "next/link";
+import { Link } from "react-router-dom";
 
 const SidebarData = ({ toggle }) => {
   return (

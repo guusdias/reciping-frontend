@@ -75,6 +75,7 @@ export default function ElipseMenu({ id, onEdit }) {
         onClose={handleClose}
       >
         <MenuItem
+          className="edit-recipe"
           sx={{
             fontFamily: "Inter",
             color: "rgb(55, 65, 81)",
@@ -90,7 +91,11 @@ export default function ElipseMenu({ id, onEdit }) {
           Editar
         </MenuItem>
         <Divider sx={{ my: 0.5 }} />
-        <MenuItem sx={{ padding: "4px", paddingLeft: "1rem" }} disableRipple>
+        <MenuItem
+          className="delete-recipe"
+          sx={{ padding: "4px", paddingLeft: "1rem" }}
+          disableRipple
+        >
           <AlertDialog
             id={id}
             open={openAlertDialog}
