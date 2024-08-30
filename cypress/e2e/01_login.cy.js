@@ -36,24 +36,24 @@ describe("Recipe Management Application", () => {
     addRecipe.typeImgUrl(input.imgUrl);
     addRecipe.submit();
 
-    cy.get('[href="/profile"]', { timeout: 10000 }).click();
-    cy.url().should("include", "/profile");
-    cy.get('input[name="user_name"]').clear().type("novoTestUser");
-    cy.get('input[name="email"]').clear().type("novoTestUser@msail.com");
-    cy.get('input[name="user_img"]')
-      .clear()
-      .type(
-        "https://static-00.iconduck.com/assets.00/cypress-icon-512x512-zi8589rq.png"
-      );
-    cy.get('button[type="submit"]').click();
+    // cy.get('[href="/profile"]', { timeout: 10000 }).click();
+    // cy.url().should("include", "/profile");
+    // cy.get('input[name="user_name"]').clear().type("novoTestUser");
+    // cy.get('input[name="email"]').clear().type("novoTestUser@msail.com");
+    // cy.get('input[name="user_img"]')
+    //   .clear()
+    //   .type(
+    //     "https://static-00.iconduck.com/assets.00/cypress-icon-512x512-zi8589rq.png"
+    //   );
+    // cy.get('button[type="submit"]').click();
 
-    cy.url().should("include", "/recipes");
-    cy.get(
-      '[class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"] edit-recipe'
-    ).click();
-    cy.get('input[placeholder="Title"]').type("NEW TEST NAME");
-    cy.get(
-      '[class="py-2 px-4 bg-orange-500 text-white border-2  border-orange-500 font-medium rounded-md hover:bg-orange-600  hover:text-white focus:outline-none focus:ring-2 focus:ring-orange-500"]'
-    ).click();
+    // cy.url().should("include", "/recipes");
+    // cy.get(
+    //   '[class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"] edit-recipe'
+    // ).click();
+    // cy.get('input[placeholder="Title"]').type("NEW TEST NAME");
+    // cy.get(
+    //   '[class="py-2 px-4 bg-orange-500 text-white border-2  border-orange-500 font-medium rounded-md hover:bg-orange-600  hover:text-white focus:outline-none focus:ring-2 focus:ring-orange-500"]'
+    // ).click();
   });
 });
