@@ -1,27 +1,30 @@
 import Axios from "axios";
+import { User } from "../../types/index";
 
-const storeRecipes = (recipes) => {
+const API_BASE_URL = "https://reciping-backend.onrender.com";
+
+const storeRecipes = (recipes: any[]): void => {
   localStorage.setItem("recipes", JSON.stringify(recipes));
 };
 
-const getStoredRecipes = () => {
+const getStoredRecipes = (): any[] => {
   const storedRecipes = localStorage.getItem("recipes");
   return storedRecipes ? JSON.parse(storedRecipes) : [];
 };
 
-const getUser = () => JSON.parse(sessionStorage.getItem("user"));
+const getUser = (): User | null =>
+  JSON.parse(sessionStorage.getItem("user") || "null");
 
-const fetchRecipesByUser = async () => {
+const fetchRecipesByUser = async (): Promise<any[]> => {
   const user = getUser();
-
-  if (!user || !user.id) {
+  if (!user || !user._id) {
     console.error("Usuário não encontrado ou ID inválido.");
     return getStoredRecipes();
   }
 
   try {
     const response = await Axios.get(
-      `https://reciping-backend.onrender.com/user/${user.id}/recipes`
+      `${API_BASE_URL}/user/${user._id}/recipes`
     );
     const recipes = response.data.recipes;
     storeRecipes(recipes);
@@ -32,11 +35,9 @@ const fetchRecipesByUser = async () => {
   }
 };
 
-const fetchAllRecipes = async () => {
+const fetchAllRecipes = async (): Promise<any[]> => {
   try {
-    const response = await Axios.get(
-      "https://reciping-backend.onrender.com/user/recipes/all"
-    );
+    const response = await Axios.get(`${API_BASE_URL}/user/recipes/all`);
     const recipes = response.data;
     storeRecipes(recipes);
     return recipes;
@@ -46,21 +47,17 @@ const fetchAllRecipes = async () => {
   }
 };
 
-export const registerUser = async (userData) => {
+const registerUser = async (userData: Partial<User>): Promise<User> => {
   try {
     const newUserData = {
       ...userData,
       recipes: [],
     };
-    const response = await Axios.post(
-      "https://reciping-backend.onrender.com/user",
-      newUserData,
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const response = await Axios.post(`${API_BASE_URL}/user`, newUserData, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     return response.data;
   } catch (error) {
     console.error("Erro ao registrar usuário:", error);
@@ -68,16 +65,15 @@ export const registerUser = async (userData) => {
   }
 };
 
-export const insertRecipe = async (userData) => {
+const insertRecipe = async (recipeData: any): Promise<any> => {
   const user = getUser();
-  if (!user || !user.id) {
+  if (!user || !user._id) {
     throw new Error("Usuário não encontrado ou ID inválido.");
   }
 
   try {
-    const recipeData = { ...userData };
     const response = await Axios.post(
-      `https://reciping-backend.onrender.com/user/${user.id}/recipes`,
+      `${API_BASE_URL}/user/${user._id}/recipes`,
       recipeData,
       {
         headers: {
@@ -92,12 +88,13 @@ export const insertRecipe = async (userData) => {
   }
 };
 
-const deleteRecipeById = async (recipeId) => {
+const deleteRecipeById = async (recipeId: string): Promise<any> => {
   const user = getUser();
+  if (!user) throw new Error("User not found");
 
   try {
     const response = await Axios.delete(
-      `https://reciping-backend.onrender.com/user/${user.id}/recipes/${recipeId}`
+      `${API_BASE_URL}/user/${user._id}/recipes/${recipeId}`
     );
     return response.data;
   } catch (error) {
@@ -106,12 +103,16 @@ const deleteRecipeById = async (recipeId) => {
   }
 };
 
-const updateRecipeById = async (recipeId, updatedRecipe) => {
+const updateRecipeById = async (
+  recipeId: string,
+  updatedRecipe: any
+): Promise<any> => {
   const user = getUser();
+  if (!user) throw new Error("User not found");
 
   try {
     const response = await Axios.put(
-      `https://reciping-backend.onrender.com/user/${user.id}/recipes/${recipeId}`,
+      `${API_BASE_URL}/user/${user._id}/recipes/${recipeId}`,
       updatedRecipe
     );
     return response.data;
@@ -121,17 +122,18 @@ const updateRecipeById = async (recipeId, updatedRecipe) => {
   }
 };
 
-const updateUser = async (recipeId, updatedUser) => {
-  const user = getUser();
-
+const updateUser = async (
+  userId: string,
+  updatedUser: Partial<User>
+): Promise<User> => {
   try {
     const response = await Axios.put(
-      `https://reciping-backend.onrender.com/user/${user.id}`,
+      `${API_BASE_URL}/user/${userId}`,
       updatedUser
     );
     return response.data;
   } catch (error) {
-    console.error(`Error updating recipe with ID ${recipeId}:`, error);
+    console.error(`Error updating user with ID ${userId}:`, error);
     throw error;
   }
 };

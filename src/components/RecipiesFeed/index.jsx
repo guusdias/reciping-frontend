@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Recipe from "../Recipe";
 import api from "../../api/User/index.jsx";
 import CircularProgress from "@mui/material/CircularProgress";
-import shuffledArray from "../../helpers/getShuffeldArray.js";
+import shuffledArray from "../../helpers/getShuffeldArray.ts";
 
 const RecipesFeed = () => {
   const [recipes, setRecipes] = useState([]);

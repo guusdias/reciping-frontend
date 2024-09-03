@@ -1,5 +1,5 @@
-import ProfileEdit from "../../components/ProfileEdit";
+import ProfileEdit from "../../components/ProfileEdit/index.tsx";
 
 export default function Profile() {
-  return <ProfileEdit/>
+  return <ProfileEdit />;
 }
