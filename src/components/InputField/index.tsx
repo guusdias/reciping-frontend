@@ -1,34 +1,27 @@
-import { ChangeEvent, forwardRef } from "react";
+import { forwardRef } from "react";
 
 interface InputFieldProps {
   type: string;
-  defaultValue?: string;
-  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
-  placeholder: string;
-  className?: string;
+  id: string;
   name: string;
+  placeholder: string;
   label: string;
 }
 
 const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
-  (
-    { type, defaultValue, onChange, placeholder, className, name, label },
-    ref
-  ) => {
+  ({ type, id, name, placeholder, label }, ref) => {
     return (
-      <div className="flex-col justify-between items-center">
-        <label htmlFor={name} className="w-1/4 mr-2 text-sm font-medium">
-          {label}:
+      <div>
+        <label htmlFor={id} className="block text-sm font-medium text-gray-700">
+          {label}
         </label>
         <input
           ref={ref}
           type={type}
+          id={id}
           name={name}
-          defaultValue={defaultValue}
-          onChange={onChange}
+          className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
           placeholder={placeholder}
-          id={name}
-          className={`flex-grow px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-orange-500 w-full ${className}`}
         />
       </div>
     );

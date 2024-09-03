@@ -32,3 +32,24 @@ export interface FormRefs {
   password: React.RefObject<HTMLInputElement>;
   user_img: React.RefObject<HTMLInputElement>;
 }
+
+export interface RecipeFormData {
+  title: string;
+  ingredients: string;
+  description: string;
+  mainIngredient: string;
+  instructions: string;
+  img_url: string;
+}
+
+export interface RecipeFormRefs {
+  title: React.RefObject<HTMLInputElement>;
+  ingredients: React.RefObject<HTMLTextAreaElement>;
+  description: React.RefObject<HTMLTextAreaElement>;
+  mainIngredient: React.RefObject<HTMLInputElement>;
+  instructions: React.RefObject<HTMLTextAreaElement>;
+  img_url: React.RefObject<HTMLInputElement>;
+}
+export interface ApiError extends Error {
+  message: string;
+}

@@ -1,26 +1,31 @@
-import { ChangeEvent } from "react";
+import { forwardRef } from "react";
 
 interface TextAreaFieldProps {
-  value: string;
-  onChange: (e: ChangeEvent<HTMLTextAreaElement>) => void;
+  id: string;
+  name: string;
+  label: string;
   placeholder: string;
-  className?: string;
+  rows?: number;
 }
 
-const TextAreaField = ({
-  value,
-  onChange,
-  placeholder,
-  className,
-}: TextAreaFieldProps) => {
-  return (
-    <textarea
-      value={value}
-      onChange={onChange}
-      placeholder={placeholder}
-      className={className}
-    />
-  );
-};
+const TextAreaField = forwardRef<HTMLTextAreaElement, TextAreaFieldProps>(
+  ({ id, name, label, placeholder, rows = 3 }, ref) => {
+    return (
+      <div>
+        <label htmlFor={id} className="block text-sm font-medium text-gray-700">
+          {label}
+        </label>
+        <textarea
+          ref={ref}
+          id={id}
+          name={name}
+          className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+          placeholder={placeholder}
+          rows={rows}
+        />
+      </div>
+    );
+  }
+);
 
 export default TextAreaField;

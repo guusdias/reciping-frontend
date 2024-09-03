@@ -1,13 +1,11 @@
-// ProfileEdit.tsx
-
 import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../../api/User";
 import { User, FormRefs } from "../../types";
-import ProfileForm from "../ProfileForm";
-import ProfilePhoto from "../ProfilePhoto";
+import ProfileForm from "../../components/ProfileForm";
+import ProfilePhoto from "../../components/ProfilePhoto";
 
-const ProfileEdit = () => {
+const Profile = () => {
   const navigate = useNavigate();
   const user: User | null = JSON.parse(
     sessionStorage.getItem("user") || "null"
@@ -60,4 +58,4 @@ const ProfileEdit = () => {
   );
 };
 
-export default ProfileEdit;
+export default Profile;

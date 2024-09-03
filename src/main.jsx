@@ -4,10 +4,10 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { AuthProvider, AuthContext } from "./contexts/AuthContext";
 
-import Profile from "./pages/Profile/index.jsx";
+import Profile from "./pages/Profile/index.tsx";
 import BasePage from "./pages/BasePage/index.jsx";
 import Feed from "./pages/Feed/index.jsx";
-import AddRecipe from "./components/AddRecipe/index.jsx";
+import AddRecipe from "./components/AddRecipe/index.tsx";
 import NotFound from "./pages/NotFound/index.jsx";
 import Favorites from "./pages/Favorites/index.jsx";
 import MyRecipes from "./pages/MyRecipes/index.jsx";

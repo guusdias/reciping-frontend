@@ -1,5 +1,5 @@
 import Axios from "axios";
-import { User } from "../../types/index";
+import { RecipeFormData, User } from "../../types/index";
 
 const API_BASE_URL = "https://reciping-backend.onrender.com";
 
@@ -65,7 +65,9 @@ const registerUser = async (userData: Partial<User>): Promise<User> => {
   }
 };
 
-const insertRecipe = async (recipeData: any): Promise<any> => {
+export async function insertRecipe(
+  recipeData: RecipeFormData
+): Promise<object> {
   const user = getUser();
   if (!user || !user._id) {
     throw new Error("Usuário não encontrado ou ID inválido.");
@@ -86,7 +88,7 @@ const insertRecipe = async (recipeData: any): Promise<any> => {
     console.error("Erro ao inserir receita:", error);
     throw new Error("Erro ao inserir receita.");
   }
-};
+}
 
 const deleteRecipeById = async (recipeId: string): Promise<any> => {
   const user = getUser();
@@ -142,7 +144,6 @@ export default {
   fetchRecipesByUser,
   fetchAllRecipes,
   registerUser,
-  insertRecipe,
   deleteRecipeById,
   updateRecipeById,
   updateUser,
