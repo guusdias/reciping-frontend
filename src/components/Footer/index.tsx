@@ -1,5 +1,3 @@
-import React from "react";
-
 const Footer = () => {
   return (
     <footer className="flex justify-between items-center bg-gradient-to-r from-yellow-500 via-orange-500 to-red-600 py-4 px-8 text-white">

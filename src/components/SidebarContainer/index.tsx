@@ -4,7 +4,7 @@ import UserProfile from "../UserProfile";
 import SidebarData from "../SidebarData";
 
 export default function Sidebar() {
-  const [toggle, setToggle] = useState(false);
+  const [toggle, setToggle] = useState<boolean>(false);
 
   return (
     <div
@@ -16,16 +16,13 @@ export default function Sidebar() {
       <SidebarData toggle={toggle} />
 
       <div
-        className="absolute top-[7rem] flex justify-center items=center -left-5
-        w-10 h-10 rounded-full cursor-pointer
-      "
-        onClick={() => {
-          setToggle(!toggle);
-        }}
+        className="absolute top-[7rem] flex justify-center items-center -left-5 w-10 h-10 rounded-full cursor-pointer"
+        onClick={() => setToggle(!toggle)}
       >
         <BiChevronLeft
-          className={` ${toggle ? "rotate-180" : ""}
-          text-3xl transition-all duration-300 `}
+          className={`${
+            toggle ? "rotate-180" : ""
+          } text-3xl transition-all duration-300`}
         />
       </div>
     </div>
