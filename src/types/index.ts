@@ -11,3 +11,17 @@ export interface RecipeProps {
   showElipse?: boolean;
   imgDisplay?: boolean;
 }
+
+export interface User {
+  _id: string;
+  user_name: string;
+  email: string;
+  user_img?: string;
+}
+
+export interface FormData {
+  user_name: string;
+  email: string;
+  password: string;
+  user_img: string;
+}
