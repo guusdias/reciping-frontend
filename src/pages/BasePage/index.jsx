@@ -18,7 +18,7 @@ export default function BasePage() {
     <main className="flex flex-col h-screen bg-gray-200">
       <Header showSearch={showSearch} />
       <div className="flex flex-1 gap-4 py-4 px-8">
-        <aside className="bg-gray-200 w-1/4 flex flex-col justify-center items-center h-full">
+        <aside className="bg-gray-200 w-1/4 flex flex-col justify-start items-start h-full">
           <Sidebar />
         </aside>
         <section className="flex-1 flex flex-col justify-center items-center">
