@@ -34,14 +34,14 @@ export function useFavoriteContext() {
     if (!favoriteRepeated) {
       newList.push(newFavorite);
     } else {
-      newList = newList.filter(item => item.id !== newFavorite.id);
+      newList = newList.filter((item) => item.id !== newFavorite.id);
     }
 
     setFavorite(newList);
   }
 
   function removeFavorite(id) {
-    setFavorite(favorite.filter(item => item.id !== id));
+    setFavorite(favorite.filter((item) => item.id !== id));
   }
 
   return {
