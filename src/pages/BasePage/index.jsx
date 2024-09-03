@@ -1,8 +1,9 @@
+import React from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import Sidebar from "../../components/SidebarContainer";
 import Header from "../../components/Header";
 import FavoritesProvider from "../../contexts/Favorite";
-import Footer from "../../components/Footer";
+import Footer from "../../components/Footer/index.tsx";
 import Welcome from "../../components/Welcome";
 
 export default function BasePage() {
