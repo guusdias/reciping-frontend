@@ -1,7 +1,5 @@
-// api/User/index.ts
-
 import Axios from "axios";
-import { User } from "../../types";
+import { User } from "../../types/index";
 
 const API_BASE_URL = "https://reciping-backend.onrender.com";
 

@@ -25,3 +25,10 @@ export interface FormData {
   password: string;
   user_img: string;
 }
+
+export interface FormRefs {
+  user_name: React.RefObject<HTMLInputElement>;
+  email: React.RefObject<HTMLInputElement>;
+  password: React.RefObject<HTMLInputElement>;
+  user_img: React.RefObject<HTMLInputElement>;
+}
