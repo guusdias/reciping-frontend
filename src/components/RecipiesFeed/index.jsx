@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Recipe from "../Recipe";
 import api from "../../api/User/index.jsx";
 import CircularProgress from "@mui/material/CircularProgress";
+import shuffledArray from "../../helpers/getShuffeldArray.js";
 
 const RecipesFeed = () => {
   const [recipes, setRecipes] = useState([]);
@@ -26,7 +27,7 @@ const RecipesFeed = () => {
             img_url: recipe._doc.img_url,
             _id: recipe._doc._id,
           }));
-        setRecipes(shuffleArray(formattedRecipes));
+        setRecipes(shuffledArray(formattedRecipes));
       } catch (error) {
         console.error("Error fetching recipes:", error);
       } finally {
@@ -37,20 +38,6 @@ const RecipesFeed = () => {
     fetchRecipes();
   }, []);
 
-  // Função para embaralhar o array de receitas
-  const shuffleArray = (array) => {
-    const shuffledArray = array.slice(); // Criar uma cópia do array
-    for (let i = shuffledArray.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [shuffledArray[i], shuffledArray[j]] = [
-        shuffledArray[j],
-        shuffledArray[i],
-      ];
-    }
-    return shuffledArray;
-  };
-
-  // Filtrar receitas pelo termo de busca
   const filteredRecipes = recipes.filter((recipe) =>
     recipe.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
