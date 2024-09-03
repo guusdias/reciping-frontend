@@ -8,7 +8,7 @@ import Profile from "./pages/Profile/index.tsx";
 import BasePage from "./pages/BasePage/index.jsx";
 import Feed from "./pages/Feed/index.jsx";
 import AddRecipe from "./components/AddRecipe/index.tsx";
-import NotFound from "./pages/NotFound/index.jsx";
+import NotFound from "./pages/NotFound/index.tsx";
 import Favorites from "./pages/Favorites/index.jsx";
 import MyRecipes from "./pages/MyRecipes/index.jsx";
 import Login from "./pages/Login/index";
