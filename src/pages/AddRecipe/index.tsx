@@ -4,8 +4,8 @@ import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { insertRecipe } from "../../api/User/index";
 import { RecipeFormRefs, ApiError } from "../../types/index.tsx";
-import InputField from "../InputField";
-import TextAreaField from "../TextAreaField";
+import InputField from "../../components/InputField";
+import TextAreaField from "../../components/TextAreaField";
 
 const AddRecipe = () => {
   const navigate = useNavigate();
