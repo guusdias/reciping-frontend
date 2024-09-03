@@ -1,7 +1,7 @@
 import React from "react";
 import { Outlet, useLocation } from "react-router-dom";
-import Sidebar from "../../components/SidebarContainer";
-import Header from "../../components/Header";
+import Sidebar from "../../components/SidebarContainer/index.tsx";
+import Header from "../../components/Header/index.tsx";
 import FavoritesProvider from "../../contexts/Favorite";
 import Footer from "../../components/Footer/index.tsx";
 import Welcome from "../../components/Welcome";

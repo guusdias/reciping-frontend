@@ -1,10 +1,13 @@
-import PropTypes from "prop-types";
-import { datas } from "../../utils/Data";
 import { Link } from "react-router-dom";
+import { datas } from "../../utils/Data";
 
-const SidebarData = ({ toggle }) => {
+interface SidebarDataProps {
+  toggle: boolean;
+}
+
+const SidebarData = ({ toggle }: SidebarDataProps) => {
   return (
-    <div className="">
+    <div>
       {datas.map((data) => (
         <div
           key={data.id}
@@ -24,7 +27,7 @@ const SidebarData = ({ toggle }) => {
               </div>
             </button>
           ) : (
-            <Link to={data.path} className="flex items-center">
+            <Link to={data.path as string} className="flex items-center">
               <div className="mr-8 text-[1.7rem] text-brown">{data.icon}</div>
               <div
                 className={`${
@@ -39,10 +42,6 @@ const SidebarData = ({ toggle }) => {
       ))}
     </div>
   );
-};
-
-SidebarData.propTypes = {
-  toggle: PropTypes.bool.isRequired,
 };
 
 export default SidebarData;

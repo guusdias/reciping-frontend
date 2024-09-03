@@ -5,7 +5,15 @@ import { RiLogoutCircleLine } from "react-icons/ri";
 import { MdFormatListBulletedAdd } from "react-icons/md";
 import { IoHome } from "react-icons/io5";
 
-export const datas = [
+export interface DataItem {
+  id: number;
+  icon: JSX.Element;
+  text: string;
+  path?: string;
+  onClick?: () => void;
+}
+
+export const datas: DataItem[] = [
   {
     id: 1,
     icon: <IoHome />,
