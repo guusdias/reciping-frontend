@@ -5,11 +5,11 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { AuthProvider, AuthContext } from "./contexts/AuthContext";
 
 import Profile from "./pages/Profile/index.tsx";
-import BasePage from "./pages/BasePage/index.jsx";
-import Feed from "./pages/Feed/index.jsx";
+import BasePage from "./pages/BasePage/index.tsx";
+import Feed from "./pages/Feed/index.tsx";
 import AddRecipe from "./pages/AddRecipe/index.tsx";
 import NotFound from "./pages/NotFound/index.tsx";
-import Favorites from "./pages/Favorites/index.jsx";
+import Favorites from "./pages/Favorites/index.tsx";
 import MyRecipes from "./pages/MyRecipes/index.jsx";
 import Login from "./pages/Login/index";
 import Register from "./pages/Register/index.jsx";

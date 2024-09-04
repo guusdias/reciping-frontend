@@ -1,5 +1,5 @@
 export interface RecipeProps {
-  id: string;
+  _id: string;
   title: string;
   description: string;
   ingredients: string;
@@ -12,6 +12,9 @@ export interface RecipeProps {
   imgDisplay?: boolean;
 }
 
+export interface RecipeResponse {
+  recipes: RecipeProps[];
+}
 export interface User {
   _id: string;
   user_name: string;
@@ -52,4 +55,16 @@ export interface RecipeFormRefs {
 }
 export interface ApiError extends Error {
   message: string;
+}
+
+export interface FavoriteItem {
+  id: string;
+  title: string;
+  description: string;
+  ingredients: string;
+  instructions: string;
+  img_url: string;
+  mainIngredient: string;
+  user_name: string;
+  user_img: string;
 }

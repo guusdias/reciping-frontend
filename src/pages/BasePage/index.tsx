@@ -1,24 +1,18 @@
-import React from "react";
 import { Outlet, useLocation } from "react-router-dom";
-import Sidebar from "../../components/SidebarContainer/index.tsx";
-import Header from "../../components/Header/index.tsx";
-import FavoritesProvider from "../../contexts/Favorite";
-import Footer from "../../components/Footer/index.tsx";
+import Sidebar from "../../components/SidebarContainer/index";
+import Header from "../../components/Header/index";
+import { FavoritesProvider } from "../../contexts/Favorite";
+import Footer from "../../components/Footer/index";
 import Welcome from "../../components/Welcome";
 
-export default function BasePage() {
+const BasePage = () => {
   const location = useLocation();
-
-  const showSearch =
-    location.pathname === "/feed" ||
-    location.pathname === "/recipes" ||
-    location.pathname === "/favorites";
 
   const welcome = location.pathname === "/";
 
   return (
     <main className="flex flex-col h-screen bg-gray-200">
-      <Header showSearch={showSearch} />
+      <Header />
       <div className="flex flex-1 gap-4 py-4 px-8">
         <aside className="bg-gray-200 w-1/4 flex flex-col justify-start items-start h-full">
           <Sidebar />
@@ -37,4 +31,6 @@ export default function BasePage() {
       <Footer className="py-4 px-8" />
     </main>
   );
-}
+};
+
+export default BasePage;

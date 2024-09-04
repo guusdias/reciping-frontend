@@ -1,42 +1,44 @@
-import { useState, useEffect } from "react";
+import React, { useState, useCallback } from "react";
 import Recipe from "../../components/Recipe";
-import api from "../../api/User/index.jsx";
+import api from "../../api/User";
 import CircularProgress from "@mui/material/CircularProgress";
-import shuffledArray from "../../helpers/getShuffeldArray.ts";
+import shuffledArray from "../../helpers/getShuffeldArray";
+import { RecipeRequest } from "../../types";
 
 const Feed = () => {
-  const [recipes, setRecipes] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [recipes, setRecipes] = useState<RecipeRequest[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [searchTerm, setSearchTerm] = useState<string>("");
 
-  useEffect(() => {
-    const fetchRecipes = async () => {
-      try {
-        setIsLoading(true);
-        const response = await api.fetchAllRecipes();
-        const formattedRecipes = response.recipes
-          .filter((recipe) => recipe._doc)
-          .map((recipe) => ({
-            user_img: recipe.$__parent.user_img,
-            user_name: recipe.$__parent.user_name,
-            title: recipe._doc.title,
-            description: recipe._doc.description,
-            mainIngredient: recipe._doc.mainIngredient,
-            ingredients: recipe._doc.ingredients.toLowerCase(),
-            instructions: recipe._doc.instructions,
-            img_url: recipe._doc.img_url,
-            _id: recipe._doc._id,
-          }));
-        setRecipes(shuffledArray(formattedRecipes));
-      } catch (error) {
-        console.error("Error fetching recipes:", error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
+  const fetchRecipes = useCallback(async () => {
+    try {
+      setIsLoading(true);
+      const fetchedRecipes = await api.fetchAllRecipes();
+      const formattedRecipes = fetchedRecipes
+        .filter((recipe: RecipeRequest) => recipe._id)
+        .map((recipe: RecipeRequest) => ({
+          user_img: recipe.user_img,
+          user_name: recipe.user_name,
+          title: recipe.title,
+          description: recipe.description,
+          mainIngredient: recipe.mainIngredient,
+          ingredients: recipe.ingredients.toLowerCase(),
+          instructions: recipe.instructions,
+          img_url: recipe.img_url,
+          _id: recipe._id,
+        }));
 
-    fetchRecipes();
+      setRecipes(shuffledArray(formattedRecipes));
+    } catch (error) {
+      console.error("Error fetching recipes:", error);
+    } finally {
+      setIsLoading(false);
+    }
   }, []);
+
+  React.useEffect(() => {
+    fetchRecipes();
+  }, [fetchRecipes]);
 
   const filteredRecipes = recipes.filter((recipe) =>
     recipe.title.toLowerCase().includes(searchTerm.toLowerCase())
@@ -71,7 +73,7 @@ const Feed = () => {
             user_img={recipe.user_img}
             description={recipe.description}
             title={recipe.title}
-            ingredients={recipe.ingredients.toLowerCase()}
+            ingredients={recipe.ingredients}
             instructions={recipe.instructions}
             img_url={recipe.img_url}
             mainIngredient={recipe.mainIngredient}

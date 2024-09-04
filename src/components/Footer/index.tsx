@@ -1,6 +1,12 @@
-const Footer = () => {
+interface FooterProps {
+  className?: string;
+}
+
+const Footer = ({ className }: FooterProps) => {
   return (
-    <footer className="flex justify-between items-center bg-gradient-to-r from-yellow-500 via-orange-500 to-red-600 py-4 px-8 text-white">
+    <footer
+      className={`flex justify-between items-center bg-gradient-to-r from-yellow-500 via-orange-500 to-red-600 py-4 px-8 text-white ${className}`}
+    >
       <div className="flex items-center space-x-4">
         <span className="text-lg font-bold">Reciping</span>
         <p className="text-sm">© 2024 Todos os direitos reservados.</p>

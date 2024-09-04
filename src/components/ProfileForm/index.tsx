@@ -1,5 +1,3 @@
-// ProfileForm.tsx
-
 import React from "react";
 import { User, FormRefs } from "../../types";
 import InputField from "../InputField";
@@ -25,6 +23,7 @@ const ProfileForm = ({
       >
         <InputField
           ref={formRefs.user_name}
+          id="user_name"
           type="text"
           name="user_name"
           defaultValue={user?.user_name || ""}
@@ -33,6 +32,7 @@ const ProfileForm = ({
         />
         <InputField
           ref={formRefs.email}
+          id="email"
           type="email"
           name="email"
           defaultValue={user?.email || ""}
@@ -41,6 +41,7 @@ const ProfileForm = ({
         />
         <InputField
           ref={formRefs.user_img}
+          id="user_img"
           type="text"
           name="user_img"
           defaultValue={user?.user_img || ""}

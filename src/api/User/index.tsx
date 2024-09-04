@@ -1,13 +1,18 @@
 import Axios from "axios";
-import { RecipeFormData, User } from "../../types/index";
+import {
+  RecipeFormData,
+  User,
+  RecipeRequest,
+  RecipeResponse,
+} from "../../types/index";
 
 const API_BASE_URL = "https://reciping-backend.onrender.com";
 
-const storeRecipes = (recipes: any[]): void => {
+const storeRecipes = (recipes: RecipeRequest[]): void => {
   localStorage.setItem("recipes", JSON.stringify(recipes));
 };
 
-const getStoredRecipes = (): any[] => {
+const getStoredRecipes = (): RecipeRequest[] => {
   const storedRecipes = localStorage.getItem("recipes");
   return storedRecipes ? JSON.parse(storedRecipes) : [];
 };
@@ -15,7 +20,7 @@ const getStoredRecipes = (): any[] => {
 const getUser = (): User | null =>
   JSON.parse(sessionStorage.getItem("user") || "null");
 
-const fetchRecipesByUser = async (): Promise<any[]> => {
+const fetchRecipesByUser = async (): Promise<RecipeRequest[]> => {
   const user = getUser();
   if (!user || !user._id) {
     console.error("Usuário não encontrado ou ID inválido.");
@@ -23,7 +28,7 @@ const fetchRecipesByUser = async (): Promise<any[]> => {
   }
 
   try {
-    const response = await Axios.get(
+    const response = await Axios.get<RecipeResponse>(
       `${API_BASE_URL}/user/${user._id}/recipes`
     );
     const recipes = response.data.recipes;
@@ -35,15 +40,15 @@ const fetchRecipesByUser = async (): Promise<any[]> => {
   }
 };
 
-const fetchAllRecipes = async (): Promise<any[]> => {
+const fetchAllRecipes = async (): Promise<RecipeRequest[]> => {
   try {
-    const response = await Axios.get(`${API_BASE_URL}/user/recipes/all`);
-    const recipes = response.data;
-    storeRecipes(recipes);
-    return recipes;
+    const response = await Axios.get<RecipeRequest[]>(
+      `${API_BASE_URL}/user/recipes/all`
+    );
+    return response.data;
   } catch (error) {
     console.error("Error fetching recipes:", error);
-    return getStoredRecipes();
+    return [];
   }
 };
 
