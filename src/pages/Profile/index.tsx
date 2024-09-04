@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import api from "../../api/User";
+import api from "../../api/User/index";
 import { User, FormRefs } from "../../types";
 import ProfileForm from "../../components/ProfileForm";
 import ProfilePhoto from "../../components/ProfilePhoto";
