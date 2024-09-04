@@ -1,5 +1,5 @@
 export interface RecipeProps {
-  _id: string;
+  id: string;
   title: string;
   description: string;
   ingredients: string;
@@ -11,10 +11,22 @@ export interface RecipeProps {
   showElipse?: boolean;
   imgDisplay?: boolean;
 }
+export interface RecipeRequest {
+  _id: string;
+  title: string;
+  description: string;
+  mainIngredient: string;
+  ingredients: string;
+  instructions: string;
+  img_url: string;
+  user_name: string;
+  user_img: string;
+}
 
 export interface RecipeResponse {
-  recipes: RecipeProps[];
+  recipes: RecipeRequest[];
 }
+
 export interface User {
   _id: string;
   user_name: string;
