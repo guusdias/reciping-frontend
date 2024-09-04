@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-import Recipe from "../Recipe";
-import api from "../../api/User/index.jsx";
+import Recipe from "../../components/Recipe";
+import api from "../../api/User/index";
 import CircularProgress from "@mui/material/CircularProgress";
+import { RecipeRequest } from "../../types";
 
 const MyRecipesFeed = () => {
-  const [recipes, setRecipes] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [recipes, setRecipes] = useState<RecipeRequest[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
     const getRecipes = async () => {
@@ -30,16 +31,18 @@ const MyRecipesFeed = () => {
       ) : recipes.length > 0 ? (
         recipes.map((recipe) => (
           <Recipe
-            key={recipe?._id}
-            id={recipe?._id}
-            description={recipe?.description}
-            title={recipe?.title}
+            key={recipe._id}
+            id={recipe._id}
+            description={recipe.description}
+            title={recipe.title}
             ingredients={recipe.ingredients.toLowerCase()}
-            instructions={recipe?.instructions}
-            img_url={recipe?.img_url}
-            main_ingredients={recipe?.mainIngredient}
+            instructions={recipe.instructions}
+            img_url={recipe.img_url}
+            mainIngredient={recipe.mainIngredient}
             showElipse={false}
             imgDisplay={false}
+            user_name={recipe.user_name}
+            user_img={recipe.user_img}
           />
         ))
       ) : (

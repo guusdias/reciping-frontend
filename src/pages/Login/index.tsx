@@ -1,26 +1,32 @@
-import React, { useState, useContext } from "react";
+import { useState, useContext, ChangeEvent, FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../contexts/AuthContext.jsx";
-import { makeAuth } from "../../api/Auth";
+import { AuthContext } from "../../contexts/AuthContext";
+import { makeAuth } from "../../api/Auth/index";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Login = () => {
-  const { login } = useContext(AuthContext);
+  const authContext = useContext(AuthContext);
+
+  if (!authContext) {
+    throw new Error("AuthContext não foi inicializado corretamente.");
+  }
+
+  const { login } = authContext;
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
 
-  const [error, setError] = useState(null);
-  const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [showPassword, setShowPassword] = useState<boolean>(false);
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
       const response = await makeAuth({
@@ -34,7 +40,7 @@ const Login = () => {
       } else {
         console.log("Nenhum token retornado na autenticação.");
       }
-    } catch (error) {
+    } catch (error: any) {
       setError(error.message);
       console.error("Erro durante a autenticação:", error.message);
     }

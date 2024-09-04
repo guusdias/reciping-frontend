@@ -1,11 +1,18 @@
-import React, { useState } from "react";
+import { useState, ChangeEvent, FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { registerUser } from "../../api/User/index";
-import { Message } from "@mui/icons-material";
+import api from "../../api/User/index";
+
+interface FormData {
+  user_name: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+  user_img: string;
+}
 
 const Register = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     user_name: "",
     email: "",
     password: "",
@@ -14,18 +21,19 @@ const Register = () => {
       "https://carijosartesanato.com.br/wp-content/uploads/elementor/thumbs/Placeholder-Avatar-User-Fallback-pvqp224ve5uwf3b7fd4ka5dyo8pcirivpbfs0xavpc.png",
   });
 
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [showConfirmPassword, setShowConfirmPassword] =
+    useState<boolean>(false);
+  const [error, setError] = useState<string>("");
   const navigate = useNavigate();
 
   const { user_name, email, password, confirmPassword, user_img } = formData;
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
     if (password !== confirmPassword) {
@@ -35,11 +43,18 @@ const Register = () => {
 
     try {
       const newUser = { user_name, email, password, user_img, recipes: [] };
-      const data = await registerUser(newUser);
-      setError("");
+      await api.registerUser(newUser);
       navigate("/login");
-    } catch (error) {
-      setError(error.response?.data?.message || "Erro ao registrar o usuário.");
+    } catch (error: any) {
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
+        setError(error.response.data.message);
+      } else {
+        setError("Erro ao registrar o usuário.");
+      }
     }
   };
 
