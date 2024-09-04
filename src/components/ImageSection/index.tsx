@@ -11,7 +11,7 @@ interface ImageSectionProps {
   setEditedImgUrl: (value: string) => void;
 }
 
-const ImageSection: React.FC<ImageSectionProps> = ({
+const ImageSection = ({
   user_img,
   user_name,
   img_url,
@@ -20,7 +20,7 @@ const ImageSection: React.FC<ImageSectionProps> = ({
   isEditing,
   editedImgUrl,
   setEditedImgUrl,
-}) => (
+}: ImageSectionProps) => (
   <div>
     {imgDisplay && (
       <div className="flex items-center mt-5 ml-7">

@@ -3,7 +3,7 @@ import Recipe from "../../components/Recipe";
 import { useFavoriteContext } from "../../contexts/Favorite";
 import { RecipeProps } from "../../types";
 
-const Favorites: React.FC = () => {
+const Favorites = () => {
   const { favorite } = useFavoriteContext();
 
   return (
